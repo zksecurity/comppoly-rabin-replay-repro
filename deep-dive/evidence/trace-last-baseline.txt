@@ -1,0 +1,295 @@
+parsed 20321 declarations
+replaying dependencies
+dependencies accepted in 5944 ms
+replaying target KoalaBear.sexticPoly_irreducible with kernel diagnostics enabled
+THEOREM_PHASE begin
+THEOREM_PHASE share-value
+THEOREM_PHASE share-type
+THEOREM_PHASE check-header
+THEOREM_PHASE is-prop
+THEOREM_PHASE no-mvar-fvar
+THEOREM_PHASE check-body
+THEOREM_PHASE final-defeq
+WHNF_ENTRIES 2687
+WHNF_MAX_NESTED_CALLS 26
+WHNF_FAILED_DEPTH 0
+WHNF_APP_ENTRIES 1229
+WHNF_BETA_STEPS 469
+WHNF_LET_STEPS 5
+WHNF_PROJ_STEPS 154
+WHNF_RECURSOR_STEPS 35
+WHNF_DELTA_STEPS 342
+WHNF_NAT_STEPS 12
+INFER_CACHE hit=331 miss=434 disabled=0
+WHNF_CORE_CACHE hit=58 miss=1374 disabled=0
+WHNF_CACHE hit=13 miss=131 disabled=0
+UNFOLD_CACHE hit=218 miss=84 disabled=0
+EQV_QUICK calls=417 true=268 no-add=0 isolated=0
+EQV_ADD attempts=301 actual=301
+WATCHED_DEFEQ calls=1 cached-hits=22 initial-cached-hits=22 ignored=0 reset-before=0
+WATCHED_ROOT_GIVEN Dvd.dvd.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (semigroupDvd.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (SemigroupWithZero.toSemigroup.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalSemiring.toSemigroupWithZero.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalCommSemiring.toNonUnitalSemiring.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalCommRing.toNonUnitalCommSemiring.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (CommRing.toNonUnitalCommRing.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.commRing.{0} (ZMod KoalaBear.fieldSize) (ZMod.commRing KoalaBear.fieldSize)))))))) KoalaBear.sexticPoly (HSub.hSub.{0, 0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (instHSub.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.instSub.{0} (ZMod KoalaBear.fieldSize) (DivisionRing.toRing.{0} (ZMod KoalaBear.fieldSize) (Field.toDivisionRing.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (HPow.hPow.{0, 0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) Nat (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (instHPow.{0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) Nat (NPow.toPow.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Monoid.toNPow.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Semiring.toMonoid.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.semiring.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))))))) (Polynomial.X.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (NPow.toPow.{0} Nat (Monoid.toNPow.{0} Nat Nat.instMonoid))) KoalaBear.fieldSize (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6)))) (Polynomial.X.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))))
+WATCHED_ROOT_EXPECTED Dvd.dvd.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (semigroupDvd.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (SemigroupWithZero.toSemigroup.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalSemiring.toSemigroupWithZero.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalCommSemiring.toNonUnitalSemiring.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalCommRing.toNonUnitalCommSemiring.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (CommRing.toNonUnitalCommRing.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.commRing.{0} KoalaBear.Field (Field.toCommRing.{0} KoalaBear.Field KoalaBear.instFieldField)))))))) KoalaBear.sexticPoly (HSub.hSub.{0, 0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (instHSub.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.instSub.{0} KoalaBear.Field (DivisionRing.toRing.{0} KoalaBear.Field (Field.toDivisionRing.{0} KoalaBear.Field KoalaBear.instFieldField)))) (HPow.hPow.{0, 0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) Nat (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (instHPow.{0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) Nat (NPow.toPow.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Monoid.toNPow.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Semiring.toMonoid.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.semiring.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))))))) (Polynomial.X.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (NPow.toPow.{0} Nat (Monoid.toNPow.{0} Nat Nat.instMonoid))) KoalaBear.fieldSize (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6)))) (Polynomial.X.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))))
+WATCHED_FIRST_CACHED_LEFT Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))
+WATCHED_FIRST_CACHED_RIGHT Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))
+WATCHED_CACHED_PAIR 0 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_CACHED_PAIR 1 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 2 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 3 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 4 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_CACHED_PAIR 5 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_CACHED_PAIR 6 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_CACHED_PAIR 7 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 8 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 9 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 10 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_CACHED_PAIR 11 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_CACHED_PAIR 12 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_CACHED_PAIR 13 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 14 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 15 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 16 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_CACHED_PAIR 17 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_CACHED_PAIR 18 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 19 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 0 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 1 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 2 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 3 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 4 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 5 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_INITIAL_CACHED_PAIR 6 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 7 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 8 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 9 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 10 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 11 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_INITIAL_CACHED_PAIR 12 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 13 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 14 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 15 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 16 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 17 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_INITIAL_CACHED_PAIR 18 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 19 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+FAILURE_CACHE hit=0 miss=8 adds=0 disabled=0
+WHNF_RECENT App:Polynomial.rec/5 Const:Polynomial.rec App:head-Lambda/5 Lambda App:head-Lambda/1 Lambda App:head-Lambda/1 Lambda App:head-Lambda/1 Lambda App:Polynomial.ofFinsupp/3 Const:Polynomial.ofFinsupp App:Polynomial.ofFinsupp/3 Const:Polynomial.ofFinsupp App:Polynomial.ofFinsupp/3 Const:Polynomial.ofFinsupp App:ZMod/1 Const:ZMod Const:KoalaBear.Field App:ZMod/1 Const:ZMod App:Ring.toSemiring/2 Const:Ring.toSemiring App:Ring.toSemiring/2 Const:Ring.toSemiring App:head-Lambda/2 Lambda Proj App:CommRing.toRing/2 Const:CommRing.toRing App:head-Lambda/2 Lambda Proj Proj App:CommRing.toRing/2 Const:CommRing.toRing App:head-Lambda/2 Lambda Proj App:ZMod.commRing/1 Const:ZMod.commRing App:head-Lambda/1 App:Ring.mk/13 Const:Ring.mk App:Semiring.mk/10 Const:Semiring.mk App:Semiring.mk/10 Const:Semiring.mk App:HMul.hMul/6 Const:HMul.hMul App:HMul.hMul/6 Const:HMul.hMul App:head-Lambda/6 Lambda App:head-Proj/2 Proj App:instHMul/2 Const:instHMul App:head-Lambda/6 Lambda App:head-Proj/2 Proj App:instHMul/2 Const:instHMul
+FAILED_UNFOLD_TOTAL 377
+FAILED_UNFOLD_DISTINCT 102
+FAILED_UNFOLD 22 Polynomial.casesOn
+FAILED_UNFOLD 22 _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1
+FAILED_UNFOLD 20 DivisionSemiring.toSemiring
+FAILED_UNFOLD 20 Polynomial.rec
+FAILED_UNFOLD 16 KoalaBear.Field
+FAILED_UNFOLD 15 Nat.rec
+FAILED_UNFOLD 14 OfNat.ofNat
+FAILED_UNFOLD 11 HMul.hMul
+FAILED_UNFOLD 9 Mul.mul
+FAILED_UNFOLD 8 Nat.casesOn
+FAILED_UNFOLD 8 Pow.pow
+FAILED_UNFOLD 8 Ring.toSemiring
+FAILED_UNFOLD 8 Semifield.toCommSemiring
+FAILED_UNFOLD 8 npowRec._f
+FAILED_UNFOLD 8 npowRec.match_1
+FAILED_UNFOLD 7 CommRing.toRing
+FAILED_UNFOLD 7 HSub.hSub
+FAILED_UNFOLD 7 instOfNatNat
+FAILED_UNFOLD 6 HPow.hPow
+FAILED_UNFOLD 6 Semifield.toDivisionSemiring
+FAILED_UNFOLD 5 Add.add
+FAILED_UNFOLD 5 CommSemiring.toSemiring
+FAILED_UNFOLD 5 HAdd.hAdd
+FAILED_UNFOLD 4 NPow.npow
+FAILED_UNFOLD 4 Semigroup.toMul
+FAILED_UNFOLD 4 outParam
+FAILED_UNFOLD 3 Polynomial.instMul
+FAILED_UNFOLD 3 Polynomial.semiring
+FAILED_UNFOLD 3 Semiring.toMonoid
+FAILED_UNFOLD 3 ZMod.commRing
+FAILED_UNFOLD 3 inferInstance
+FAILED_UNFOLD 3 instHMul
+FAILED_UNFOLD 3 instHPow
+FAILED_UNFOLD 2 AddHom.toFun
+FAILED_UNFOLD 2 CommRing.toNonUnitalCommRing
+FAILED_UNFOLD 2 DFunLike.coe
+FAILED_UNFOLD 2 DivisionRing.toRing
+FAILED_UNFOLD 2 Dvd.dvd
+FAILED_UNFOLD 2 Field.toCommRing
+FAILED_UNFOLD 2 Field.toSemifield
+FAILED_UNFOLD 2 KoalaBear.instFieldField
+FAILED_UNFOLD 2 LinearMap.toAddHom
+FAILED_UNFOLD 2 Monoid.toNPow
+FAILED_UNFOLD 2 Monoid.toSemigroup
+FAILED_UNFOLD 2 NPow.toPow
+FAILED_UNFOLD 2 Nat.brecOn
+FAILED_UNFOLD 2 Nat.brecOn.go
+FAILED_UNFOLD 2 NatPow.pow
+FAILED_UNFOLD 2 NonUnitalCommRing.toNonUnitalCommSemiring
+FAILED_UNFOLD 2 NonUnitalCommRing.toNonUnitalRing
+FAILED_UNFOLD 2 NonUnitalCommSemiring.toNonUnitalSemiring
+FAILED_UNFOLD 2 NonUnitalNonAssocRing.toMul
+FAILED_UNFOLD 2 NonUnitalNonAssocSemiring.toMul
+FAILED_UNFOLD 2 NonUnitalRing.toNonUnitalNonAssocRing
+FAILED_UNFOLD 2 NonUnitalSemiring.toNonUnitalNonAssocSemiring
+FAILED_UNFOLD 2 NonUnitalSemiring.toSemigroupWithZero
+FAILED_UNFOLD 2 Polynomial.commRing
+FAILED_UNFOLD 2 Polynomial.monomial
+FAILED_UNFOLD 2 Polynomial.ring
+FAILED_UNFOLD 2 SemigroupWithZero.toSemigroup
+FAILED_UNFOLD 2 instHAdd
+FAILED_UNFOLD 2 npowRec
+FAILED_UNFOLD 2 semigroupDvd
+FAILED_UNFOLD 1 AddCancelCommMonoid.toAddCommMonoid
+FAILED_UNFOLD 1 AddCommMonoid.toAddMonoid
+FAILED_UNFOLD 1 AddMonoid.toAddZeroClass
+FAILED_UNFOLD 1 AddMonoid.toZero
+FAILED_UNFOLD 1 AddZero.toZero
+FAILED_UNFOLD 1 AddZeroClass.toAddZero
+FAILED_UNFOLD 1 CommMonoid.toMonoid
+FAILED_UNFOLD 1 CommRing.toCommSemiring
+FAILED_UNFOLD 1 Field.toDivisionRing
+FAILED_UNFOLD 1 KoalaBear.fieldSize
+FAILED_UNFOLD 1 KoalaBear.sexticPoly
+FAILED_UNFOLD 1 LinearMap.instFunLike
+FAILED_UNFOLD 1 MonoidHom.toOneHom
+FAILED_UNFOLD 1 MulZeroClass.toZero
+FAILED_UNFOLD 1 NPow.ofPow
+FAILED_UNFOLD 1 Nat.instAddCancelCommMonoid
+FAILED_UNFOLD 1 Nat.instAddCommMonoid
+FAILED_UNFOLD 1 Nat.instAddMonoid
+FAILED_UNFOLD 1 Nat.instCommMonoid
+FAILED_UNFOLD 1 Nat.instMonoid
+FAILED_UNFOLD 1 Nat.instMulZeroClass
+FAILED_UNFOLD 1 One.one
+FAILED_UNFOLD 1 One.toOfNat1
+FAILED_UNFOLD 1 OneHom.toFun
+FAILED_UNFOLD 1 Polynomial.C
+FAILED_UNFOLD 1 Polynomial.X
+FAILED_UNFOLD 1 Polynomial.instAdd
+FAILED_UNFOLD 1 Polynomial.instOne
+FAILED_UNFOLD 1 Polynomial.pow
+FAILED_UNFOLD 1 RingHom.instFunLike
+FAILED_UNFOLD 1 RingHom.toMonoidHom
+FAILED_UNFOLD 1 Sub.sub
+FAILED_UNFOLD 1 ZMod.instField
+FAILED_UNFOLD 1 Zero.ofOfNat0
+FAILED_UNFOLD 1 instAddNat
+FAILED_UNFOLD 1 instHSub
+FAILED_UNFOLD 1 instNatPowNat
+FAILED_UNFOLD 1 instPowNat
+FAILED_UNFOLD 1 instSubNat
+FAILED_UNFOLD_WATCH Fintype.card 0
+FAILED_UNFOLD_WATCH Fintype.elems 0
+FAILED_UNFOLD_WATCH ZMod.card 0
+FAILED_UNFOLD_WATCH ZMod.fintype 0
+FAILED_UNFOLD_WATCH Eq.mp 0
+FAILED_UNFOLD_WATCH Eq.mpr 0
+FAILED_UNFOLD_WATCH Eq.rec 0
+FAILED_UNFOLD_WATCH Eq.ndrec 0
+FAILED_UNFOLD_WATCH congrArg 0
+FAILED_UNFOLD_LAST Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Polynomial.rec Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Polynomial.rec Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Polynomial.rec Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn HPow.hPow Pow.pow NPow.npow Pow.pow npowRec Nat.brecOn Nat.brecOn.go OfNat.ofNat instOfNatNat Nat.rec npowRec._f npowRec.match_1 Nat.casesOn HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Polynomial.rec Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn DFunLike.coe RingHom.instFunLike OneHom.toFun MonoidHom.toOneHom RingHom.toMonoidHom Polynomial.C AddHom.toFun LinearMap.toAddHom Polynomial.monomial Polynomial.rec Polynomial.rec Polynomial.casesOn Polynomial.rec _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Polynomial.rec Polynomial.casesOn Polynomial.rec KoalaBear.Field Ring.toSemiring Ring.toSemiring CommRing.toRing ZMod.commRing HMul.hMul HMul.hMul
+THEOREM_PHASE checked
+target accepted in 4 ms
+UNFOLD 4 Semigroup.toMul
+UNFOLD 20 Polynomial.rec
+UNFOLD 1 AddZeroClass.toAddZero
+UNFOLD 1 instHSub
+UNFOLD 2 Polynomial.monomial
+UNFOLD 6 HPow.hPow
+UNFOLD 2 Nat.brecOn.go
+UNFOLD 2 Monoid.toNPow
+UNFOLD 5 CommSemiring.toSemiring
+UNFOLD 2 Monoid.toSemigroup
+UNFOLD 3 Polynomial.instMul
+UNFOLD 14 OfNat.ofNat
+UNFOLD 2 Nat.brecOn
+UNFOLD 1 Polynomial.instAdd
+UNFOLD 1 Polynomial.instOne
+UNFOLD 2 NonUnitalNonAssocRing.toMul
+UNFOLD 2 NonUnitalCommRing.toNonUnitalCommSemiring
+UNFOLD 1 Polynomial.X
+UNFOLD 1 Polynomial.C
+UNFOLD 2 AddHom.toFun
+UNFOLD 1 instAddNat
+UNFOLD 1 instSubNat
+UNFOLD 2 DivisionRing.toRing
+UNFOLD 2 instHAdd
+UNFOLD 1 Zero.ofOfNat0
+UNFOLD 2 CommRing.toNonUnitalCommRing
+UNFOLD 5 HAdd.hAdd
+UNFOLD 8 Semifield.toCommSemiring
+UNFOLD 7 HSub.hSub
+UNFOLD 2 Field.toSemifield
+UNFOLD 1 NPow.ofPow
+UNFOLD 2 Dvd.dvd
+UNFOLD 1 Polynomial.pow
+UNFOLD 1 One.toOfNat1
+UNFOLD 1 AddCommMonoid.toAddMonoid
+UNFOLD 1 LinearMap.instFunLike
+UNFOLD 2 npowRec
+UNFOLD 1 Nat.instMulZeroClass
+UNFOLD 1 Nat.instAddMonoid
+UNFOLD 2 semigroupDvd
+UNFOLD 1 AddMonoid.toAddZeroClass
+UNFOLD 2 NonUnitalNonAssocSemiring.toMul
+UNFOLD 8 Ring.toSemiring
+UNFOLD 2 Polynomial.commRing
+UNFOLD 1 instPowNat
+UNFOLD 2 NonUnitalRing.toNonUnitalNonAssocRing
+UNFOLD 1 RingHom.instFunLike
+UNFOLD 8 Pow.pow
+UNFOLD 2 NonUnitalCommRing.toNonUnitalRing
+UNFOLD 8 npowRec.match_1
+UNFOLD 1 Nat.instAddCommMonoid
+UNFOLD 1 ZMod.instField
+UNFOLD 2 NatPow.pow
+UNFOLD 2 Field.toCommRing
+UNFOLD 1 OneHom.toFun
+UNFOLD 2 SemigroupWithZero.toSemigroup
+UNFOLD 4 outParam
+UNFOLD 3 inferInstance
+UNFOLD 1 CommRing.toCommSemiring
+UNFOLD 1 Nat.instAddCancelCommMonoid
+UNFOLD 3 instHMul
+UNFOLD 20 DivisionSemiring.toSemiring
+UNFOLD 5 Add.add
+UNFOLD 15 Nat.rec
+UNFOLD 16 KoalaBear.Field
+UNFOLD 1 MonoidHom.toOneHom
+UNFOLD 1 Nat.instMonoid
+UNFOLD 3 instHPow
+UNFOLD 1 AddMonoid.toZero
+UNFOLD 1 Nat.instCommMonoid
+UNFOLD 3 Semiring.toMonoid
+UNFOLD 1 AddZero.toZero
+UNFOLD 1 instNatPowNat
+UNFOLD 8 npowRec._f
+UNFOLD 2 NPow.toPow
+UNFOLD 7 CommRing.toRing
+UNFOLD 1 MulZeroClass.toZero
+UNFOLD 2 NonUnitalSemiring.toSemigroupWithZero
+UNFOLD 11 HMul.hMul
+UNFOLD 6 Semifield.toDivisionSemiring
+UNFOLD 7 instOfNatNat
+UNFOLD 1 Sub.sub
+UNFOLD 1 RingHom.toMonoidHom
+UNFOLD 1 CommMonoid.toMonoid
+UNFOLD 2 NonUnitalCommSemiring.toNonUnitalSemiring
+UNFOLD 2 DFunLike.coe
+UNFOLD 1 Field.toDivisionRing
+UNFOLD 1 KoalaBear.fieldSize
+UNFOLD 9 Mul.mul
+UNFOLD 22 _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1
+UNFOLD 22 Polynomial.casesOn
+UNFOLD 2 KoalaBear.instFieldField
+UNFOLD 2 NonUnitalSemiring.toNonUnitalNonAssocSemiring
+UNFOLD 2 LinearMap.toAddHom
+UNFOLD 3 Polynomial.semiring
+UNFOLD 1 KoalaBear.sexticPoly
+UNFOLD 4 NPow.npow
+UNFOLD 8 Nat.casesOn
+UNFOLD 1 AddCancelCommMonoid.toAddCommMonoid
+UNFOLD 1 One.one
+UNFOLD 2 Polynomial.ring
+UNFOLD 3 ZMod.commRing
+kernel unfolded 102 distinct declarations
+kernel unfold events: 377

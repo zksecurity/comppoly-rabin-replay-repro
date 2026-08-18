@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "date": "2026-08-18",
+  "lean_toolchain": "leanprover/lean4:v4.32.2",
+  "probe": {
+    "path": "deep-dive/probes/CompareTransport.lean",
+    "sha256": "09e4fa9c7608bf76e11c843e1d2251c99ed18f1991df0930e96c1bf4de8eb02c"
+  },
+  "bounds": {
+    "wall_seconds": 120,
+    "cpu_seconds": 90,
+    "address_space_mib": 4096,
+    "data_mib": 4096
+  },
+  "comparisons": {
+    "trace_first_vs_trace_last": {
+      "left_export_sha256": "3ad6a6b7e6cc9773006c8cc947d6293a1f7853c99357f0702be1bea0a2490878",
+      "right_export_sha256": "3230ba9e3c41a1b1a01617c5be60b69ad4e3cff3460e7d4cd4c57de89ab78175",
+      "result": "structurally_equal",
+      "expr_hash": 2826623319,
+      "approx_depth": 26,
+      "exit_code": 0,
+      "wall_seconds": 21.493,
+      "peak_rss_mib": 775.3
+    },
+    "cop2_last_vs_cop2_first": {
+      "left_export_sha256": "173251a3af211bd1fcc4dbf324ed3556a19875cfa7de5fcb9ff923f614a086e2",
+      "right_export_sha256": "b3bb3c387dd3ff594a285bc96fc266db35a31a34620675e14e2ac1a168a12760",
+      "result": "structurally_equal",
+      "expr_hash": 923861692,
+      "approx_depth": 26,
+      "exit_code": 0,
+      "wall_seconds": 21.173,
+      "peak_rss_mib": 775.2
+    }
+  },
+  "command_template": [
+    "python3",
+    "run_bounded.py",
+    "--wall",
+    "120",
+    "--cpu",
+    "90",
+    "--data-mib",
+    "4096",
+    "--",
+    "/usr/bin/env",
+    "ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2",
+    "lake",
+    "env",
+    "lean",
+    "--run",
+    "deep-dive/probes/CompareTransport.lean",
+    "LEFT.ndjson",
+    "RIGHT.ndjson"
+  ]
+}

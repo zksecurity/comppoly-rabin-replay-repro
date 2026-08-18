@@ -1,0 +1,361 @@
+{
+  "target": "KoalaBear.sexticPoly_irreducible",
+  "variant": "pos_trace_last",
+  "export_sha256": "ecb027ed256d76292960bfc8cfcd58c5fc8df1c5127fa5c42dea21ded8dcb3aa",
+  "probe_sha256": "fb8e65d209c999934837cf21e2b6567865ad0ad304eb6c7b97df6e3808960c61",
+  "target_export": {
+    "label": "pos_trace_last:target-export",
+    "command": [
+      "lake",
+      "env",
+      "/private/tmp/replay-command-repro/comparator-af5/.lake/packages/lean4export/.lake/build/bin/lean4export",
+      "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+      "--",
+      "KoalaBear.sexticPoly_irreducible"
+    ],
+    "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_trace_last",
+    "timeout_seconds": 120,
+    "memory_watchdog_bytes_process_group": 8589934592,
+    "inherited_stack_limit_bytes_per_process": 8372224,
+    "returncode": 0,
+    "timed_out": false,
+    "memory_exceeded": false,
+    "wall_seconds": 4.857,
+    "peak_process_group_rss_kib": 3043664,
+    "stdout": "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+    "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/target-export.stderr.log"
+  },
+  "modes": {
+    "baseline": {
+      "environment": {},
+      "run": {
+        "label": "pos_trace_last:kernel-probe:baseline",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 7.852,
+        "peak_process_group_rss_kib": 231200,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-baseline.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-baseline.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 2687,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 1229,
+        "WHNF_BETA_STEPS": 469,
+        "WHNF_LET_STEPS": 5,
+        "WHNF_PROJ_STEPS": 154,
+        "WHNF_RECURSOR_STEPS": 35,
+        "WHNF_DELTA_STEPS": 342,
+        "WHNF_NAT_STEPS": 12,
+        "FAILED_UNFOLD_TOTAL": 377,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    },
+    "no_infer_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_INFER_CACHE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_infer_cache",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 8.321,
+        "peak_process_group_rss_kib": 230960,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_infer_cache.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_infer_cache.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 5,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 3856,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 1740,
+        "WHNF_BETA_STEPS": 634,
+        "WHNF_LET_STEPS": 5,
+        "WHNF_PROJ_STEPS": 162,
+        "WHNF_RECURSOR_STEPS": 35,
+        "WHNF_DELTA_STEPS": 514,
+        "WHNF_NAT_STEPS": 33,
+        "FAILED_UNFOLD_TOTAL": 549,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    },
+    "no_whnf_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_WHNF_CACHE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_whnf_cache",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 7.779,
+        "peak_process_group_rss_kib": 231344,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_whnf_cache.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_whnf_cache.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 5840,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 2686,
+        "WHNF_BETA_STEPS": 1157,
+        "WHNF_LET_STEPS": 8,
+        "WHNF_PROJ_STEPS": 369,
+        "WHNF_RECURSOR_STEPS": 92,
+        "WHNF_DELTA_STEPS": 761,
+        "WHNF_NAT_STEPS": 27,
+        "FAILED_UNFOLD_TOTAL": 853,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    },
+    "no_infer_no_whnf_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_INFER_CACHE": "1",
+        "LEAN_PROBE_NO_WHNF_CACHE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_infer_no_whnf_cache",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 7.523,
+        "peak_process_group_rss_kib": 231168,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_infer_no_whnf_cache.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_infer_no_whnf_cache.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 9,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 13797,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 6041,
+        "WHNF_BETA_STEPS": 2301,
+        "WHNF_LET_STEPS": 24,
+        "WHNF_PROJ_STEPS": 1040,
+        "WHNF_RECURSOR_STEPS": 92,
+        "WHNF_DELTA_STEPS": 1919,
+        "WHNF_NAT_STEPS": 90,
+        "FAILED_UNFOLD_TOTAL": 2011,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    },
+    "no_unfold_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_UNFOLD_CACHE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_unfold_cache",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 7.44,
+        "peak_process_group_rss_kib": 230976,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_unfold_cache.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_unfold_cache.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 2687,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 1229,
+        "WHNF_BETA_STEPS": 469,
+        "WHNF_LET_STEPS": 5,
+        "WHNF_PROJ_STEPS": 154,
+        "WHNF_RECURSOR_STEPS": 35,
+        "WHNF_DELTA_STEPS": 342,
+        "WHNF_NAT_STEPS": 12,
+        "FAILED_UNFOLD_TOTAL": 377,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    },
+    "no_eqv_add": {
+      "environment": {
+        "LEAN_PROBE_NO_EQV_ADD": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_eqv_add",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 61.952,
+        "peak_process_group_rss_kib": 6899712,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_eqv_add.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_eqv_add.log"
+      },
+      "outcome": "rejected",
+      "target_ms": 54392,
+      "deep_recursion": true,
+      "counters": {
+        "WHNF_ENTRIES": 43729437,
+        "WHNF_MAX_NESTED_CALLS": 1507882,
+        "WHNF_FAILED_DEPTH": 1507882,
+        "WHNF_APP_ENTRIES": 21864658,
+        "WHNF_BETA_STEPS": 11309217,
+        "WHNF_LET_STEPS": 0,
+        "WHNF_PROJ_STEPS": 754025,
+        "WHNF_RECURSOR_STEPS": 1507875,
+        "WHNF_DELTA_STEPS": 5277715,
+        "WHNF_NAT_STEPS": 753945,
+        "KERNEL_BACKTRACE_FRAMES": 100000,
+        "KERNEL_BT_OMITTED": 99824,
+        "FAILED_UNFOLD_TOTAL": 6785590,
+        "FAILED_UNFOLD_DISTINCT": 62
+      }
+    },
+    "isolated_eqv_state": {
+      "environment": {
+        "LEAN_PROBE_NO_EQV_STATE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:isolated_eqv_state",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 61.001,
+        "peak_process_group_rss_kib": 6896624,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-isolated_eqv_state.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-isolated_eqv_state.log"
+      },
+      "outcome": "rejected",
+      "target_ms": 53634,
+      "deep_recursion": true,
+      "counters": {
+        "WHNF_ENTRIES": 43729437,
+        "WHNF_MAX_NESTED_CALLS": 1507882,
+        "WHNF_FAILED_DEPTH": 1507882,
+        "WHNF_APP_ENTRIES": 21864658,
+        "WHNF_BETA_STEPS": 11309217,
+        "WHNF_LET_STEPS": 0,
+        "WHNF_PROJ_STEPS": 754025,
+        "WHNF_RECURSOR_STEPS": 1507875,
+        "WHNF_DELTA_STEPS": 5277715,
+        "WHNF_NAT_STEPS": 753945,
+        "KERNEL_BACKTRACE_FRAMES": 100000,
+        "KERNEL_BT_OMITTED": 99824,
+        "FAILED_UNFOLD_TOTAL": 6785590,
+        "FAILED_UNFOLD_DISTINCT": 62
+      }
+    },
+    "no_failure_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_FAILURE_CACHE": "1"
+      },
+      "run": {
+        "label": "pos_trace_last:kernel-probe:no_failure_cache",
+        "command": [
+          "/private/tmp/comppoly-transport-matrix-20260818/artifacts/kernel-probe-cache-instrumented",
+          "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last-target.ndjson",
+          "theorem"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/artifacts",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 8.759,
+        "peak_process_group_rss_kib": 231552,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_failure_cache.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/kernel-probe-no_failure_cache.log"
+      },
+      "outcome": "accepted",
+      "target_ms": 4,
+      "deep_recursion": false,
+      "counters": {
+        "WHNF_ENTRIES": 2687,
+        "WHNF_MAX_NESTED_CALLS": 26,
+        "WHNF_FAILED_DEPTH": 0,
+        "WHNF_APP_ENTRIES": 1229,
+        "WHNF_BETA_STEPS": 469,
+        "WHNF_LET_STEPS": 5,
+        "WHNF_PROJ_STEPS": 154,
+        "WHNF_RECURSOR_STEPS": 35,
+        "WHNF_DELTA_STEPS": 342,
+        "WHNF_NAT_STEPS": 12,
+        "FAILED_UNFOLD_TOTAL": 377,
+        "FAILED_UNFOLD_DISTINCT": 102
+      }
+    }
+  }
+}

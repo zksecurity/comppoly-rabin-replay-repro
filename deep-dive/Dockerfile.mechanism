@@ -1,0 +1,70 @@
+# syntax=docker/dockerfile:1@sha256:87999aa3d42bdc6bea60565083ee17e86d1f3339802f543c0d03998580f9cb89
+
+ARG BASE_IMAGE=comppoly-rabin-replay-repro:mechanism-base
+FROM ${BASE_IMAGE}
+
+ARG LEAN_SOURCE_REV=f3b06c705e6c85f5314019d5d3baab0fec5b580c
+ARG LEAN_PATCH_SHA256=25a72ee897a26b37ee9df3150427405457f910c069b658a5875596389cec57be
+ARG LEAN_BUILD_JOBS=4
+
+USER root
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+      build-essential ccache clang cmake libgmp-dev libssl-dev libuv1-dev pkgconf \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --chown=runner:runner \
+  deep-dive/patches/lean-4.32.2-kernel-probe.patch \
+  /repro/deep-dive/patches/lean-4.32.2-kernel-probe.patch
+
+USER runner:runner
+RUN set -eu; \
+    patch=/repro/deep-dive/patches/lean-4.32.2-kernel-probe.patch; \
+    echo "${LEAN_PATCH_SHA256}  ${patch}" | sha256sum --check --strict; \
+    git init /home/runner/lean4-instrumented; \
+    git -C /home/runner/lean4-instrumented remote add origin https://github.com/leanprover/lean4.git; \
+    git -C /home/runner/lean4-instrumented fetch --no-tags --depth=1 origin "${LEAN_SOURCE_REV}"; \
+    git -C /home/runner/lean4-instrumented checkout --detach FETCH_HEAD; \
+    test "$(git -C /home/runner/lean4-instrumented rev-parse HEAD)" = "${LEAN_SOURCE_REV}"; \
+    test -z "$(git -C /home/runner/lean4-instrumented status --porcelain=v1 --untracked-files=all)"; \
+    git -C /home/runner/lean4-instrumented apply --check "${patch}"; \
+    git -C /home/runner/lean4-instrumented apply "${patch}"; \
+    git -C /home/runner/lean4-instrumented diff --check; \
+    git -C /home/runner/lean4-instrumented apply --check --reverse "${patch}"; \
+    actual_patch="$(git -C /home/runner/lean4-instrumented diff --binary HEAD | sha256sum | cut -d' ' -f1)"; \
+    test "${actual_patch}" = "${LEAN_PATCH_SHA256}"; \
+    cd /home/runner/lean4-instrumented; \
+    cmake --preset release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++; \
+    cmake --build --preset release --parallel "${LEAN_BUILD_JOBS}"; \
+    instrumented_lean=/home/runner/lean4-instrumented/build/release/stage1/bin/lean; \
+    test -x "${instrumented_lean}"; \
+    "${instrumented_lean}" --version | grep -F "version 4.32.2,"; \
+    "${instrumented_lean}" --version | grep -F "commit ${LEAN_SOURCE_REV}"
+
+COPY --chown=runner:runner --chmod=755 \
+  deep-dive/instrumented-lean-wrapper.sh \
+  /repro/deep-dive/instrumented-lean-wrapper.sh
+COPY --chown=runner:runner \
+  deep-dive/probes/DiagnosticReplay.lean \
+  /repro/deep-dive/probes/DiagnosticReplay.lean
+COPY --chown=runner:runner \
+  deep-dive/probes/SmallExponent.lean \
+  /repro/deep-dive/probes/SmallExponent.lean
+COPY --chown=runner:runner \
+  deep-dive/check_small_exponent.py \
+  /repro/deep-dive/check_small_exponent.py
+COPY --chown=runner:runner \
+  deep-dive/run_mechanism.py \
+  /repro/deep-dive/run_mechanism.py
+COPY --chown=runner:runner \
+  deep-dive/run_growth.py \
+  /repro/deep-dive/run_growth.py
+
+ENV REPRO_LEAN_SOURCE_REV=${LEAN_SOURCE_REV} \
+    REPRO_LEAN_PATCH_SHA256=${LEAN_PATCH_SHA256} \
+    REPRO_INSTRUMENTED_LEAN=/repro/deep-dive/instrumented-lean-wrapper.sh \
+    REPRO_OLD_EXPORT_SHA256=68378a3bdd5976651c248d4d7d404b82bebfd5fa5ec70a5fde5dc95702850ebb \
+    ELAN_TOOLCHAIN=leanprover/lean4:v4.32.2
+
+WORKDIR /repro
+ENTRYPOINT ["python3", "/repro/deep-dive/run_mechanism.py"]

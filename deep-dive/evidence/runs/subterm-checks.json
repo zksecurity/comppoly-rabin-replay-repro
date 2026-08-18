@@ -1,0 +1,106 @@
+{
+  "k1": {
+    "run": {
+      "label": "k1:subterm-check",
+      "command": [
+        "lake",
+        "env",
+        "zsh",
+        "-c",
+        "cd /private/tmp/comppoly-transport-matrix-20260818/source && lean --run SubtermCheck.lean /private/tmp/comppoly-transport-matrix-20260818/exports/k1.ndjson"
+      ],
+      "cwd": "/private/tmp/replay-command-repro/comparator-af5",
+      "timeout_seconds": 120,
+      "memory_watchdog_bytes_process_group": 8589934592,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 17.139,
+      "peak_process_group_rss_kib": 813456,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/subterm-check.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/subterm-check.log"
+    },
+    "maximal_transport_result": "failed",
+    "maximal_transport_ms": 177,
+    "maximal_transport_detail": "(kernel) deep recursion detected"
+  },
+  "trace": {
+    "run": {
+      "label": "trace:subterm-check",
+      "command": [
+        "lake",
+        "env",
+        "zsh",
+        "-c",
+        "cd /private/tmp/comppoly-transport-matrix-20260818/source && lean --run SubtermCheck.lean /private/tmp/comppoly-transport-matrix-20260818/exports/trace.ndjson"
+      ],
+      "cwd": "/private/tmp/replay-command-repro/comparator-af5",
+      "timeout_seconds": 120,
+      "memory_watchdog_bytes_process_group": 8589934592,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 16.892,
+      "peak_process_group_rss_kib": 813280,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/trace/subterm-check.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/trace/subterm-check.log"
+    },
+    "maximal_transport_result": "failed",
+    "maximal_transport_ms": 218,
+    "maximal_transport_detail": "(kernel) deep recursion detected"
+  },
+  "pos_trace_last": {
+    "run": {
+      "label": "pos_trace_last:subterm-check",
+      "command": [
+        "lake",
+        "env",
+        "zsh",
+        "-c",
+        "cd /private/tmp/comppoly-transport-matrix-20260818/source && lean --run SubtermCheck.lean /private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last.ndjson"
+      ],
+      "cwd": "/private/tmp/replay-command-repro/comparator-af5",
+      "timeout_seconds": 120,
+      "memory_watchdog_bytes_process_group": 8589934592,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 17.007,
+      "peak_process_group_rss_kib": 814368,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/subterm-check.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/subterm-check.log"
+    },
+    "maximal_transport_result": "failed",
+    "maximal_transport_ms": 174,
+    "maximal_transport_detail": "(kernel) deep recursion detected"
+  },
+  "pos_cop2_first": {
+    "run": {
+      "label": "pos_cop2_first:subterm-check",
+      "command": [
+        "lake",
+        "env",
+        "zsh",
+        "-c",
+        "cd /private/tmp/comppoly-transport-matrix-20260818/source && lean --run SubtermCheck.lean /private/tmp/comppoly-transport-matrix-20260818/exports/pos_cop2_first.ndjson"
+      ],
+      "cwd": "/private/tmp/replay-command-repro/comparator-af5",
+      "timeout_seconds": 120,
+      "memory_watchdog_bytes_process_group": 8589934592,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 16.319,
+      "peak_process_group_rss_kib": 812432,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/subterm-check.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/subterm-check.log"
+    },
+    "maximal_transport_result": "failed",
+    "maximal_transport_ms": 170,
+    "maximal_transport_detail": "(kernel) deep recursion detected"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "challenge_module": "CompPoly.ReplayChallenge",
+  "solution_module": "CompPoly.ReplaySolution",
+  "theorem_names": ["ReplayDemo.target"],
+  "permitted_axioms": ["propext", "Quot.sound", "Classical.choice"],
+  "enable_nanoda": false
+}

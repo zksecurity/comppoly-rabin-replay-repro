@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "record_kind": "archived_resource_observation",
+  "experiment_id": "comppoly-sextic-direct-replay-58g-2026-08-16",
+  "status": "archived_not_run_by_default",
+  "provenance": {
+    "observed_date_utc": "2026-08-16",
+    "platform": {
+      "os": "linux",
+      "architecture": "amd64"
+    },
+    "adapter_image": {
+      "identity_kind": "local_docker_image_id",
+      "id": "sha256:cdcf880d6e5de41fe0a65519073e398147bc0b7843f858bd23b9fb1d74322c80",
+      "adapter_revision": "4bab29c2c7c1cc422aa619db169e2880d97e9361",
+      "runtime_base_image_id": "sha256:e81c107009e79406d751f24a5bfbf9fc4fa8439cdc319ca8d7921914a833f2d1",
+      "runtime_source_revision": "2e779d866c8a7498e9873d4934bb6025b671fd73",
+      "source_revision": "b44367427a43004517e1d46b96fa22d914311763",
+      "arklib_revision": "99aebe906358e7399fa0e5d587e63de07a73838e",
+      "lean_version": "4.32.2",
+      "lean_commit": "f3b06c705e6c85f5314019d5d3baab0fec5b580c",
+      "comparator_present_revision": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+      "comparator_participated": false
+    },
+    "source_lock": {
+      "lake_manifest_sha256": "9e5c41038151b9a649a5f920bebfa2985a0d4b172d07c5c30202458dc5b14bc2",
+      "comppoly_revision": "6133f9f796707c438d0a614f97dc218ae976ab8f",
+      "mathlib_revision": "905b95818eb32af7874a58b427f50c1711a5e96c",
+      "evidence_basis": "lake-manifest.json at the pinned source revision"
+    }
+  },
+  "program": {
+    "kind": "direct_lean_environment_replay",
+    "source_file": "../probes/ArchivedDirectReplay.lean",
+    "source_sha256": "b42aa71c07b820311493636ef7454e53ddc3d99a96896b3330356c8f3d91a1c4",
+    "source_bytes": 868,
+    "import_module": "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+    "target_declaration": "KoalaBear.sexticPoly_irreducible",
+    "builds_transitive_dependency_map": true,
+    "starts_from_empty_environment": true,
+    "calls": "Lean.Environment.replay",
+    "uses_comparator": false,
+    "uses_lean4export": false,
+    "completion_marker": "REPLAY OK"
+  },
+  "runtime": {
+    "network": "none",
+    "memory_limit_bytes": 62277025792,
+    "memory_swap_limit_bytes": 62277025792,
+    "swap_beyond_memory_limit": false,
+    "stack_rlimit": "unlimited",
+    "guard_relevant_environment": {
+      "LEAN_MAIN_USE_THREAD": "0"
+    },
+    "unsafe_behavior_change": "The ordinary native stack guard was bypassed; this is archival stress evidence, not a recommended default run."
+  },
+  "measurement": {
+    "metric": "cgroup_v2.memory.current",
+    "scope": "whole_container",
+    "is_process_rss": false,
+    "display_unit": "GiB",
+    "bytes_per_gib": 1073741824,
+    "source_precision_gib": 0.1,
+    "nominal_poll_interval_seconds": 20,
+    "time_origin": "sampler_start_about_10_seconds_after_container_launch",
+    "samples": [
+      {"nominal_elapsed_seconds": 0, "memory_current_gib": 1.9},
+      {"nominal_elapsed_seconds": 20, "memory_current_gib": 7.6},
+      {"nominal_elapsed_seconds": 40, "memory_current_gib": 12.8},
+      {"nominal_elapsed_seconds": 60, "memory_current_gib": 17.1},
+      {"nominal_elapsed_seconds": 80, "memory_current_gib": 22.2},
+      {"nominal_elapsed_seconds": 100, "memory_current_gib": 26.9},
+      {"nominal_elapsed_seconds": 120, "memory_current_gib": 31.0},
+      {"nominal_elapsed_seconds": 140, "memory_current_gib": 34.0},
+      {"nominal_elapsed_seconds": 160, "memory_current_gib": 38.4},
+      {"nominal_elapsed_seconds": 180, "memory_current_gib": 42.4},
+      {"nominal_elapsed_seconds": 200, "memory_current_gib": 46.2},
+      {"nominal_elapsed_seconds": 220, "memory_current_gib": 49.7},
+      {"nominal_elapsed_seconds": 240, "memory_current_gib": 53.0},
+      {"nominal_elapsed_seconds": 260, "memory_current_gib": 56.0}
+    ],
+    "terminal_poll": {
+      "nominal_elapsed_seconds": 280,
+      "reported_gib": 0.0,
+      "is_memory_sample": false,
+      "meaning": "the container had exited and cgroup data was unavailable"
+    },
+    "normalized_transcript_file": "archived-guard-bypass-58g.txt",
+    "normalized_transcript_sha256": "c2ce956ff4ea99246c6e33f42b565891b1719b966b8f84cb53fa928584beb32a"
+  },
+  "outcome": {
+    "docker_state": "exited",
+    "docker_oom_killed": true,
+    "container_exit_code": 0,
+    "exit_code_masked_by_shell_pipeline": true,
+    "completion_marker_observed": false,
+    "classification": "cgroup_oom_unfinished",
+    "last_valid_sample_gib": 56.0,
+    "exact_peak_available": false
+  },
+  "derived": {
+    "ordinary_least_squares_over_all_14_valid_samples": {
+      "slope_gib_per_second": 0.2062637363,
+      "intercept_gib": 4.5571428571,
+      "r_squared": 0.9940896859
+    },
+    "description": "approximately linear aggregate memory growth over the nominal 260-second sampling window"
+  },
+  "companion_controls": {
+    "normal_stack_guard": {
+      "same_image_target_and_collector": true,
+      "closure_constants": 19908,
+      "outcome": "deep_recursion",
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible"
+    },
+    "instrumented_exact_old_revision": {
+      "source_revision": "6133f9f796707c438d0a614f97dc218ae976ab8f",
+      "export_sha256": "68378a3bdd5976651c248d4d7d404b82bebfd5fa5ec70a5fde5dc95702850ebb",
+      "diagnostic_log_sha256": "b837c74c052b3fe91a6dfd4554763b52138d091eb24c49f9f829dcf62e7d8df4",
+      "npow_rec_successor_unfolds_observed_before_guard": 5778,
+      "watched_cardinality_unfolds": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.card": 0,
+        "ZMod.fintype": 0
+      },
+      "relationship": "separate instrumented run; it supports the mechanism but did not produce the 58-GiB curve"
+    }
+  },
+  "claim_scope": {
+    "supported": [
+      "The program invoking direct fresh-environment replay reached 56.0 GiB at the last valid sample and was then OOM-killed by a 58-GiB cgroup cap without completing.",
+      "Aggregate cgroup memory grew approximately linearly over the observed nominal 260-second sampling window."
+    ],
+    "not_supported": [
+      "The process had 58 GiB RSS.",
+      "Memory was measured past 58 GiB.",
+      "Every measured byte was caused exclusively by npowRec.",
+      "Memory is mathematically unbounded or will remain linear outside the observed window.",
+      "This was a Comparator or lean4export run."
+    ]
+  }
+}

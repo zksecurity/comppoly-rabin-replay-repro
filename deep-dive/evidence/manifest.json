@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "investigation_date": "2026-08-18",
+  "host": {
+    "os": "macOS 15.7.5",
+    "build": "24G624",
+    "architecture": "arm64",
+    "compile_clang": "Apple clang 17.0.0 (clang-1700.0.13.5)",
+    "link_clang": "clang 22.1.4, llvm-project 35990504507d79e0b9deb809c8ee5e1b34ceef20"
+  },
+    "pins": {
+        "comppoly": "641694629e4557520a1539b272ec338c9f3044c7",
+        "comppoly_old_first": "6133f9f796707c438d0a614f97dc218ae976ab8f",
+    "lean_version": "4.32.2",
+    "lean_commit": "f3b06c705e6c85f5314019d5d3baab0fec5b580c",
+    "comparator": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+    "lean4export": "af5aa64bb914c3c2c781f378088dbd38acf4f804"
+  },
+  "source_artifacts": {
+    "kernel_patch_sha256": "25a72ee897a26b37ee9df3150427405457f910c069b658a5875596389cec57be",
+    "trace_last_patch_sha256": "591f6f7e3be9dec64179e522c8113c441b72da1dafef1082d5891bfd1805868f",
+        "cop2_first_patch_sha256": "d53227d654a9c98233b131e91c47ddda14f81e56d17426af2bbb2b7c5834979f",
+        "transport_variants_sha256": "6b6e8dd80974e56a576f808e1343d1b67f361994f78480d9b82706a84c575884",
+        "diagnostic_replay_sha256": "b6ed19b74851847cd68e85a541384e0b58e1ffbc276e04bd2f1450d28552c870",
+        "subterm_check_sha256": "853d4e5c357b5c0d242c819600e3cea4fd8ee3568e8e66fc96b7cec972eaa706",
+        "compare_transport_sha256": "09e4fa9c7608bf76e11c843e1d2251c99ed18f1991df0930e96c1bf4de8eb02c",
+        "analyze_export_graph_sha256": "1fe3585595911b0e1b8493e0430739476843d83809f5b9e1a18560d294eb8bf0"
+  },
+  "built_artifacts": {
+    "lean_executable_sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554",
+    "instrumented_archive_sha256": "4c801d198bd795f2434ae4c7c399a5ad8f83a95a6e5aec6cdb4a062b5fcbea6c",
+    "instrumented_dylib_sha256": "f0f19c8af87f6b92ea20ba91f47f9eef18b50e2d20279189ea564e66ae1c8282"
+  },
+  "exports": {
+        "trace_last_target": {
+            "module": "CompPoly.ReplaySolution",
+            "declaration": "ReplayDemo.target",
+            "diagnostic_target": "KoalaBear.sexticPoly_irreducible",
+            "sha256": "3230ba9e3c41a1b1a01617c5be60b69ad4e3cff3460e7d4cd4c57de89ab78175",
+      "command": [
+                "lake",
+                "env",
+                "lean4export",
+                "CompPoly.ReplaySolution",
+                "--",
+                "ReplayDemo.target"
+            ]
+        },
+        "old_first_target": {
+            "source_revision": "6133f9f796707c438d0a614f97dc218ae976ab8f",
+            "module": "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+            "declaration": "KoalaBear.sexticPoly_irreducible",
+            "sha256": "68378a3bdd5976651c248d4d7d404b82bebfd5fa5ec70a5fde5dc95702850ebb",
+            "command": [
+                "lake",
+                "env",
+                "lean4export",
+                "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+                "--",
+                "KoalaBear.sexticPoly_irreducible"
+            ]
+    }
+  },
+  "causal_runs": {
+    "shared_command": [
+      "lake",
+      "env",
+      "env",
+      "DYLD_LIBRARY_PATH=PROBE:TOOLCHAIN/lib/lean",
+      "TOOLCHAIN/bin/lean",
+      "--run",
+      "deep-dive/probes/DiagnosticReplay.lean",
+            "trace-last-solution.ndjson"
+    ],
+    "baseline": {
+      "additional_environment": {},
+      "log_sha256": "92b4970635b0e997f50b6b057dbdcdb9d446d251ba1ce404f5bf6cd27df5026b",
+      "outcome": "accepted"
+    },
+    "reset_eqv_before_transport": {
+      "additional_environment": {
+        "LEAN_PROBE_RESET_EQV_BEFORE_TRANSPORT": "1"
+      },
+      "log_sha256": "96142e8fe8232838a6422a4a4d98114d38698e6f99b6add3a0827290d34922c5",
+      "outcome": "deep_recursion"
+    },
+    "no_eqv_add": {
+      "additional_environment": {
+        "LEAN_PROBE_NO_EQV_ADD": "1"
+      },
+      "log_sha256": "42c7375221667824923c20a682b1a1f0ad8ef6d176dededb10e52d56915e8d25",
+      "outcome": "deep_recursion"
+        }
+    },
+    "old_first_run": {
+        "source_revision": "6133f9f796707c438d0a614f97dc218ae976ab8f",
+        "export_sha256": "68378a3bdd5976651c248d4d7d404b82bebfd5fa5ec70a5fde5dc95702850ebb",
+        "command": [
+            "lake",
+            "env",
+            "env",
+            "DYLD_LIBRARY_PATH=PROBE:TOOLCHAIN/lib/lean",
+            "TOOLCHAIN/bin/lean",
+            "--run",
+            "deep-dive/probes/DiagnosticReplay.lean",
+            "old-first-target.ndjson"
+        ],
+        "additional_environment": {},
+        "log_sha256": "b837c74c052b3fe91a6dfd4554763b52138d091eb24c49f9f829dcf62e7d8df4",
+        "outcome": "deep_recursion"
+    },
+  "limits": {
+    "full_comparator_wall_seconds": 120,
+    "full_comparator_process_group_rss_watchdog_gib": 8,
+    "rss_poll_milliseconds": 100,
+    "inherited_process_stack_bytes": 8372224,
+        "note": "macOS rejected finite RLIMIT_AS/RLIMIT_DATA for the Comparator matrix; aggregate RSS was sampled with libproc. The final causal runs parsed the full solution closure, replayed the target theorem separately, and used the inherited native stack guard plus a bounded outer runner."
+  }
+}

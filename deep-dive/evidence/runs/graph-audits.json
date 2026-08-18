@@ -1,0 +1,114 @@
+{
+  "k1": {
+    "run": {
+      "label": "k1:graph-audit",
+      "command": [
+        "python3",
+        "/private/tmp/comppoly-transport-matrix-20260818/source/analyze_export_graph.py",
+        "/private/tmp/comppoly-transport-matrix-20260818/exports/k1.ndjson"
+      ],
+      "cwd": "/private/tmp/comppoly-transport-matrix-20260818",
+      "timeout_seconds": 60,
+      "memory_watchdog_bytes_process_group": 4294967296,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 10.644,
+      "peak_process_group_rss_kib": 428464,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/graph-audit.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/graph-audit.log"
+    },
+    "value_root": 1690843,
+    "value_depth": 29,
+    "value_tree_size": 2992,
+    "transport_root": 1690841,
+    "transport_application_arguments": 4,
+    "transport_depth": 27,
+    "transport_tree_size": 2175
+  },
+  "trace": {
+    "run": {
+      "label": "trace:graph-audit",
+      "command": [
+        "python3",
+        "/private/tmp/comppoly-transport-matrix-20260818/source/analyze_export_graph.py",
+        "/private/tmp/comppoly-transport-matrix-20260818/exports/trace.ndjson"
+      ],
+      "cwd": "/private/tmp/comppoly-transport-matrix-20260818",
+      "timeout_seconds": 60,
+      "memory_watchdog_bytes_process_group": 4294967296,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 10.876,
+      "peak_process_group_rss_kib": 474080,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/trace/graph-audit.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/trace/graph-audit.log"
+    },
+    "value_root": 1690856,
+    "value_depth": 31,
+    "value_tree_size": 3572,
+    "transport_root": 1690817,
+    "transport_application_arguments": 4,
+    "transport_depth": 27,
+    "transport_tree_size": 2743
+  },
+  "pos_trace_last": {
+    "run": {
+      "label": "pos_trace_last:graph-audit",
+      "command": [
+        "python3",
+        "/private/tmp/comppoly-transport-matrix-20260818/source/analyze_export_graph.py",
+        "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last.ndjson"
+      ],
+      "cwd": "/private/tmp/comppoly-transport-matrix-20260818",
+      "timeout_seconds": 60,
+      "memory_watchdog_bytes_process_group": 4294967296,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 11.871,
+      "peak_process_group_rss_kib": 444800,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/graph-audit.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/graph-audit.log"
+    },
+    "value_root": 1690853,
+    "value_depth": 29,
+    "value_tree_size": 3572,
+    "transport_root": 1690851,
+    "transport_application_arguments": 4,
+    "transport_depth": 27,
+    "transport_tree_size": 2743
+  },
+  "pos_cop2_first": {
+    "run": {
+      "label": "pos_cop2_first:graph-audit",
+      "command": [
+        "python3",
+        "/private/tmp/comppoly-transport-matrix-20260818/source/analyze_export_graph.py",
+        "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_cop2_first.ndjson"
+      ],
+      "cwd": "/private/tmp/comppoly-transport-matrix-20260818",
+      "timeout_seconds": 60,
+      "memory_watchdog_bytes_process_group": 4294967296,
+      "inherited_stack_limit_bytes_per_process": 8372224,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_exceeded": false,
+      "wall_seconds": 11.289,
+      "peak_process_group_rss_kib": 421072,
+      "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/graph-audit.log",
+      "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/graph-audit.log"
+    },
+    "value_root": 1690840,
+    "value_depth": 31,
+    "value_tree_size": 2992,
+    "transport_root": 1690809,
+    "transport_application_arguments": 4,
+    "transport_depth": 27,
+    "transport_tree_size": 2175
+  }
+}

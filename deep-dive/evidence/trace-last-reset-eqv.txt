@@ -1,0 +1,339 @@
+parsed 20321 declarations
+replaying dependencies
+dependencies accepted in 5486 ms
+replaying target KoalaBear.sexticPoly_irreducible with kernel diagnostics enabled
+THEOREM_PHASE begin
+THEOREM_PHASE share-value
+THEOREM_PHASE share-type
+THEOREM_PHASE check-header
+THEOREM_PHASE is-prop
+THEOREM_PHASE no-mvar-fvar
+THEOREM_PHASE check-body
+STACK_COMPONENT deep recursion was detected at 'type checker: whnf' (potential solution: increase elaboration stack size using the `lean --tstack` flag). This flag can be set in the `weakLeanArgs` field of the Lake configuration. Further details are available in the Lean reference manual at https://lean-lang.org/doc/reference/4.32.2/find/?domain=Verso.Genre.Manual.section&name=lake-config-toml
+WHNF_ENTRIES 336869
+WHNF_MAX_NESTED_CALLS 11566
+WHNF_FAILED_DEPTH 11565
+WHNF_APP_ENTRIES 168329
+WHNF_BETA_STEPS 86904
+WHNF_LET_STEPS 3
+WHNF_PROJ_STEPS 5894
+WHNF_RECURSOR_STEPS 11559
+WHNF_DELTA_STEPS 40669
+WHNF_NAT_STEPS 5787
+INFER_CACHE hit=326 miss=429 disabled=0
+WHNF_CORE_CACHE hit=11606 miss=174221 disabled=0
+WHNF_CACHE hit=8 miss=17410 disabled=0
+UNFOLD_CACHE hit=40573 miss=57 disabled=0
+EQV_QUICK calls=414 true=261 no-add=0 isolated=0
+EQV_ADD attempts=290 actual=290
+WATCHED_DEFEQ calls=1 cached-hits=15 initial-cached-hits=22 ignored=0 reset-before=1
+WATCHED_ROOT_GIVEN Dvd.dvd.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (semigroupDvd.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (SemigroupWithZero.toSemigroup.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalSemiring.toSemigroupWithZero.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalCommSemiring.toNonUnitalSemiring.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (NonUnitalCommRing.toNonUnitalCommSemiring.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (CommRing.toNonUnitalCommRing.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.commRing.{0} (ZMod KoalaBear.fieldSize) (ZMod.commRing KoalaBear.fieldSize)))))))) KoalaBear.sexticPoly (HSub.hSub.{0, 0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (instHSub.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.instSub.{0} (ZMod KoalaBear.fieldSize) (DivisionRing.toRing.{0} (ZMod KoalaBear.fieldSize) (Field.toDivisionRing.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (HPow.hPow.{0, 0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) Nat (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (instHPow.{0, 0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) Nat (NPow.toPow.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Monoid.toNPow.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Semiring.toMonoid.{0} (Polynomial.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (Polynomial.semiring.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))))))) (Polynomial.X.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (NPow.toPow.{0} Nat (Monoid.toNPow.{0} Nat Nat.instMonoid))) KoalaBear.fieldSize (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6)))) (Polynomial.X.{0} (ZMod KoalaBear.fieldSize) (DivisionSemiring.toSemiring.{0} (ZMod KoalaBear.fieldSize) (Semifield.toDivisionSemiring.{0} (ZMod KoalaBear.fieldSize) (Field.toSemifield.{0} (ZMod KoalaBear.fieldSize) (ZMod.instField KoalaBear.fieldSize KoalaBear.instFactPrimeFieldSize))))))
+WATCHED_ROOT_EXPECTED Dvd.dvd.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (semigroupDvd.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (SemigroupWithZero.toSemigroup.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalSemiring.toSemigroupWithZero.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalCommSemiring.toNonUnitalSemiring.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (NonUnitalCommRing.toNonUnitalCommSemiring.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (CommRing.toNonUnitalCommRing.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.commRing.{0} KoalaBear.Field (Field.toCommRing.{0} KoalaBear.Field KoalaBear.instFieldField)))))))) KoalaBear.sexticPoly (HSub.hSub.{0, 0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (instHSub.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.instSub.{0} KoalaBear.Field (DivisionRing.toRing.{0} KoalaBear.Field (Field.toDivisionRing.{0} KoalaBear.Field KoalaBear.instFieldField)))) (HPow.hPow.{0, 0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) Nat (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (instHPow.{0, 0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) Nat (NPow.toPow.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Monoid.toNPow.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Semiring.toMonoid.{0} (Polynomial.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (Polynomial.semiring.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))))))) (Polynomial.X.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))) (HPow.hPow.{0, 0, 0} Nat Nat Nat (instHPow.{0, 0} Nat Nat (NPow.toPow.{0} Nat (Monoid.toNPow.{0} Nat Nat.instMonoid))) KoalaBear.fieldSize (OfNat.ofNat.{0} Nat 6 (instOfNatNat 6)))) (Polynomial.X.{0} KoalaBear.Field (DivisionSemiring.toSemiring.{0} KoalaBear.Field (Semifield.toDivisionSemiring.{0} KoalaBear.Field (Field.toSemifield.{0} KoalaBear.Field KoalaBear.instFieldField)))))
+WATCHED_FIRST_CACHED_LEFT Polynomial.{0}
+WATCHED_FIRST_CACHED_RIGHT Polynomial.{0}
+WATCHED_CACHED_PAIR 0 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 1 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 2 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_CACHED_PAIR 3 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 4 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 5 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 6 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_CACHED_PAIR 7 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_CACHED_PAIR 8 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_CACHED_PAIR 9 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_CACHED_PAIR 10 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_CACHED_PAIR 11 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 0 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 1 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 2 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 3 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 4 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 5 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_INITIAL_CACHED_PAIR 6 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 7 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 8 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 9 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 10 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 11 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+WATCHED_INITIAL_CACHED_PAIR 12 left=App:Polynomial/2 hash=1127986078 right=App:Polynomial/2 hash=617418837
+WATCHED_INITIAL_CACHED_PAIR 13 left=Const:Polynomial hash=4159427385 right=Const:Polynomial hash=4159427385
+WATCHED_INITIAL_CACHED_PAIR 14 left=App:ZMod/1 hash=1668426873 right=Const:KoalaBear.Field hash=1332953234
+WATCHED_INITIAL_CACHED_PAIR 15 left=App:ZMod/1 hash=1668426873 right=App:ZMod/1 hash=1668426873
+WATCHED_INITIAL_CACHED_PAIR 16 left=App:DivisionSemiring.toSemiring/2 hash=129567136 right=App:DivisionSemiring.toSemiring/2 hash=498421584
+WATCHED_INITIAL_CACHED_PAIR 17 left=App:CommSemiring.toSemiring/2 hash=1155791877 right=App:CommSemiring.toSemiring/2 hash=3638750130
+FAILURE_CACHE hit=0 miss=8 adds=0 disabled=0
+WHNF_FAILED_EXPR Lambda hash=65808014
+INFER_FAILURE_PHASE argument-defeq
+INFER_FAILURE_APP App:Eq.mpr/4 hash=1602071269 last=App:CompPoly.RabinCert.dvd_X_pow_sub_X_of_runChain/10 prev=App:id/2
+INFER_FAILURE_GIVEN_TYPE App:Dvd.dvd/4 hash=185995994 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly
+INFER_FAILURE_EXPECTED_TYPE App:Dvd.dvd/4 hash=2230689100 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly
+WHNF_RECENT App:head-Proj/1 Proj App:Nat.rec/4 Const:Nat.rec App:head-Lambda/4 Lambda App:head-Lambda/2 Lambda App:PProd.mk/4 Const:PProd.mk App:npowRec._f/5 Const:npowRec._f App:npowRec._f/6 Const:npowRec._f App:head-Lambda/6 Lambda App:npowRec.match_1/7 Const:npowRec.match_1 App:head-Lambda/7 Lambda App:Nat.casesOn/5 Const:Nat.casesOn App:head-Lambda/5 Lambda App:Nat.rec/5 Const:Nat.rec App:Nat.succ/1 Const:Nat.succ App:head-Lambda/5 Lambda App:head-Lambda/3 Lambda App:head-Lambda/2 Lambda App:head-Lambda/3 Lambda App:HMul.hMul/6 Const:HMul.hMul App:head-Lambda/6 Lambda App:head-Proj/2 Proj App:Mul.mul/4 Const:Mul.mul App:head-Lambda/4 Lambda App:head-Proj/2 Proj App:_private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1/5 Const:_private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 App:head-Lambda/5 Lambda App:Polynomial.casesOn/5 Const:Polynomial.casesOn App:head-Lambda/5 Lambda App:Polynomial.rec/5 Const:Polynomial.rec App:head-Proj/1 Proj App:Nat.rec/4 Const:Nat.rec App:head-Lambda/4 Lambda
+KERNEL_BACKTRACE_FRAMES 23182
+KERNEL_BT 0 0   libleanshared.dylib                 0x000000010b22db24 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 4424
+KERNEL_BT 1 1   libleanshared.dylib                 0x000000010b22d118 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 1852
+KERNEL_BT 2 2   libleanshared.dylib                 0x000000010b22d788 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 3500
+KERNEL_BT 3 3   libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 4 4   libleanshared.dylib                 0x000000010b22df3c _ZN4lean12type_checker11reduce_projERKNS_4exprEbb + 176
+KERNEL_BT 5 5   libleanshared.dylib                 0x000000010b22cf24 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 1352
+KERNEL_BT 6 6   libleanshared.dylib                 0x000000010b22d118 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 1852
+KERNEL_BT 7 7   libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 8 8   libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 9 9   libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 10 10  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 11 11  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 12 12  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 13 13  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 14 14  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 15 15  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 16 16  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 17 17  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 18 18  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 19 19  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 20 20  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 21 21  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 22 22  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23 23  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 24 24  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 25 25  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 26 26  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 27 27  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 28 28  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 29 29  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 30 30  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 31 31  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 32 32  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 33 33  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 34 34  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 35 35  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 36 36  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 37 37  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 38 38  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 39 39  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 40 40  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 41 41  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 42 42  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 43 43  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 44 44  libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 45 45  libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 46 46  libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 47 47  libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT_OMITTED 23006
+KERNEL_BT 23054 23054libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23055 23055libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23056 23056libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23057 23057libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23058 23058libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23059 23059libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23060 23060libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23061 23061libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23062 23062libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23063 23063libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23064 23064libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23065 23065libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23066 23066libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23067 23067libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23068 23068libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23069 23069libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23070 23070libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23071 23071libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23072 23072libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23073 23073libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23074 23074libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23075 23075libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23076 23076libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23077 23077libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23078 23078libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23079 23079libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23080 23080libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23081 23081libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23082 23082libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23083 23083libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23084 23084libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23085 23085libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23086 23086libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23087 23087libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23088 23088libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23089 23089libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23090 23090libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23091 23091libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23092 23092libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23093 23093libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23094 23094libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23095 23095libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23096 23096libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23097 23097libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23098 23098libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23099 23099libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23100 23100libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23101 23101libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23102 23102libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23103 23103libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23104 23104libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23105 23105libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23106 23106libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23107 23107libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23108 23108libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23109 23109libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23110 23110libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23111 23111libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23112 23112libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23113 23113libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23114 23114libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23115 23115libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23116 23116libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23117 23117libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23118 23118libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23119 23119libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23120 23120libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23121 23121libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23122 23122libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23123 23123libleanshared.dylib                 0x000000010b226bb0 _ZN4lean12type_checker4whnfERKNS_4exprE + 576
+KERNEL_BT 23124 23124libleanshared.dylib                 0x000000010b22be88 _ZN4lean12type_checker15reduce_recursorERKNS_4exprEbb + 1804
+KERNEL_BT 23125 23125libleanshared.dylib                 0x000000010b22d254 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2168
+KERNEL_BT 23126 23126libleanshared.dylib                 0x000000010b22d308 _ZN4lean12type_checker9whnf_coreERKNS_4exprEbb + 2348
+KERNEL_BT 23127 23127libleanshared.dylib                 0x000000010b232c40 _ZN4lean12type_checker25lazy_delta_reduction_stepERNS_4exprES2_ + 1220
+KERNEL_BT 23128 23128libleanshared.dylib                 0x000000010b233bec _ZN4lean12type_checker20lazy_delta_reductionERNS_4exprES2_ + 692
+KERNEL_BT 23129 23129libleanshared.dylib                 0x000000010b2335b8 _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 444
+KERNEL_BT 23130 23130libleanshared.dylib                 0x000000010b2337fc _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1024
+KERNEL_BT 23131 23131libleanshared.dylib                 0x000000010b2337fc _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1024
+KERNEL_BT 23132 23132libleanshared.dylib                 0x000000010b2337fc _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1024
+KERNEL_BT 23133 23133libleanshared.dylib                 0x000000010b2337fc _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1024
+KERNEL_BT 23134 23134libleanshared.dylib                 0x000000010b22a070 _ZN4lean12type_checker9is_def_eqERKNS_4exprES3_ + 40
+KERNEL_BT 23135 23135libleanshared.dylib                 0x000000010b231bf4 _ZN4lean12type_checker13is_def_eq_appERKNS_4exprES3_ + 284
+KERNEL_BT 23136 23136libleanshared.dylib                 0x000000010b233824 _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1064
+KERNEL_BT 23137 23137libleanshared.dylib                 0x000000010b22a070 _ZN4lean12type_checker9is_def_eqERKNS_4exprES3_ + 40
+KERNEL_BT 23138 23138libleanshared.dylib                 0x000000010b230314 _ZN4lean12type_checker17is_def_eq_bindingENS_4exprES1_ + 1132
+KERNEL_BT 23139 23139libleanshared.dylib                 0x000000010b230c50 _ZN4lean12type_checker15quick_is_def_eqERKNS_4exprES3_b + 1708
+KERNEL_BT 23140 23140libleanshared.dylib                 0x000000010b233440 _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 68
+KERNEL_BT 23141 23141libleanshared.dylib                 0x000000010b22a070 _ZN4lean12type_checker9is_def_eqERKNS_4exprES3_ + 40
+KERNEL_BT 23142 23142libleanshared.dylib                 0x000000010b231bf4 _ZN4lean12type_checker13is_def_eq_appERKNS_4exprES3_ + 284
+KERNEL_BT 23143 23143libleanshared.dylib                 0x000000010b233824 _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1064
+KERNEL_BT 23144 23144libleanshared.dylib                 0x000000010b2337fc _ZN4lean12type_checker14is_def_eq_coreERKNS_4exprES3_ + 1024
+KERNEL_BT 23145 23145libleanshared.dylib                 0x000000010b22a070 _ZN4lean12type_checker9is_def_eqERKNS_4exprES3_ + 40
+KERNEL_BT 23146 23146libleanshared.dylib                 0x000000010b229990 _ZN4lean12type_checker9infer_appERKNS_4exprEb + 1904
+KERNEL_BT 23147 23147libleanshared.dylib                 0x000000010b228560 _ZN4lean12type_checker15infer_type_coreERKNS_4exprEb + 812
+KERNEL_BT 23148 23148libleanshared.dylib                 0x000000010b229508 _ZN4lean12type_checker9infer_appERKNS_4exprEb + 744
+KERNEL_BT 23149 23149libleanshared.dylib                 0x000000010b228560 _ZN4lean12type_checker15infer_type_coreERKNS_4exprEb + 812
+KERNEL_BT 23150 23150libleanshared.dylib                 0x000000010b22a520 _ZN4lean12type_checker9infer_letERKNS_4exprEb + 864
+KERNEL_BT 23151 23151libleanshared.dylib                 0x000000010b2284ac _ZN4lean12type_checker15infer_type_coreERKNS_4exprEb + 632
+KERNEL_BT 23152 23152libleanshared.dylib                 0x000000010b22b694 _ZN4lean12type_checker5checkERKNS_4exprERKNS_8list_refINS_4nameEEE + 32
+KERNEL_BT 23153 23153libleanshared.dylib                 0x000000010b21d17c _ZNK4lean11environment11add_theoremERKNS_11declarationEb + 1516
+KERNEL_BT 23154 23154libleanshared.dylib                 0x000000010b2234e4 _ZNSt3__110__function6__funcIZ13lean_add_declE3$_0NS_9allocatorIS2_EEFN4lean11environmentEvEEclEv + 72
+KERNEL_BT 23155 23155libleanshared.dylib                 0x000000010b21eb64 _ZN4lean23catch_kernel_exceptionsINS_11environmentEEEP11lean_objectRKNSt3__18functionIFT_vEEE + 40
+KERNEL_BT 23156 23156libleanshared.dylib                 0x000000010b21ea7c lean_add_decl + 108
+KERNEL_BT 23157 23157libleanshared.dylib                 0x00000001112ae74c l___private_Lean_Replay_0__Lean_Environment_Replay_addDecl___redArg + 108
+KERNEL_BT 23158 23158libleanshared.dylib                 0x00000001112af260 l___private_Lean_Replay_0__Lean_Environment_Replay_replayConstant___lam__1 + 80
+KERNEL_BT 23159 23159libleanshared.dylib                 0x00000001112af4b8 l___private_Lean_Replay_0__Lean_Environment_Replay_replayConstant___lam__1___boxed + 28
+KERNEL_BT 23160 23160libleanshared.dylib                 0x0000000111396adc lean_apply_4 + 2672
+KERNEL_BT 23161 23161libleanshared.dylib                 0x00000001112b1ea4 l___private_Lean_Replay_0__Lean_Environment_Replay_replayConstant + 2944
+KERNEL_BT 23162 23162libleanshared.dylib                 0x00000001112b3278 l_Std_DTreeMap_Internal_Impl_forInStep___at___00__private_Lean_Replay_0__Lean_Environment_Replay_replayConstants_spec__12 + 456
+KERNEL_BT 23163 23163libleanshared.dylib                 0x00000001112b5c9c l_Lean_Environment_replay + 316
+KERNEL_BT 23164 23164libleanshared.dylib                 0x00000001112b608c l_Lean_Environment_replay___boxed + 20
+KERNEL_BT 23165 23165libleanshared.dylib                 0x000000010b26b7d8 _ZN4lean2ir11interpreter4callERKNS_4nameERKNS_9array_refINS_10object_refEEE + 504
+KERNEL_BT 23166 23166libleanshared.dylib                 0x000000010b269b0c _ZN4lean2ir11interpreter9eval_bodyERKNS_10object_refE + 1764
+KERNEL_BT 23167 23167libleanshared.dylib                 0x000000010b26b9d8 _ZN4lean2ir11interpreter4callERKNS_4nameERKNS_9array_refINS_10object_refEEE + 1016
+KERNEL_BT 23168 23168libleanshared.dylib                 0x000000010b269b0c _ZN4lean2ir11interpreter9eval_bodyERKNS_10object_refE + 1764
+KERNEL_BT 23169 23169libleanshared.dylib                 0x000000010b26cf10 _ZN4lean2ir11interpreter6stub_mEPP11lean_object + 396
+KERNEL_BT 23170 23170libleanshared.dylib                 0x000000010b26cba4 _ZN4lean2ir11interpreter10stub_m_auxEPP11lean_object + 92
+KERNEL_BT 23171 23171libleanshared.dylib                 0x000000010b26c6a8 _ZN4lean2ir11interpreter10stub_5_auxEP11lean_objectS3_S3_S3_S3_ + 48
+KERNEL_BT 23172 23172libleanshared.dylib                 0x0000000111392c9c lean_apply_2 + 3120
+KERNEL_BT 23173 23173libleanshared.dylib                 0x000000010b2670ac _ZN4lean2ir11interpreter10call_boxedERKNS_4nameEjPP11lean_object + 520
+KERNEL_BT 23174 23174libleanshared.dylib                 0x000000010b26d3a4 _ZN4lean2ir11interpreter8run_mainERKNS_8list_refINS_10string_refEEE + 620
+KERNEL_BT 23175 23175libleanshared.dylib                 0x000000010b2661f8 _ZN4lean2ir11interpreter16with_interpreterIjEET_RKNS_16elab_environmentERKNS_7optionsERKNS_4nameERKNSt3__18functionIFS3_RS1_EEE + 320
+KERNEL_BT 23176 23176libleanshared.dylib                 0x000000010b265fc8 _ZN4lean2ir8run_mainERKNS_16elab_environmentERKNS_7optionsERKNS_8list_refINS_10string_refEEE + 144
+KERNEL_BT 23177 23177libleanshared.dylib                 0x000000010b266348 lean_eval_main + 36
+KERNEL_BT 23178 23178libleanshared.dylib                 0x000000011137c410 lean_shell_main + 16240
+KERNEL_BT 23179 23179libleanshared.dylib                 0x000000010b1f89ac _ZN4lean14run_shell_mainEiPPcRKNS_10object_refE + 364
+KERNEL_BT 23180 23180libleanshared.dylib                 0x000000010b1f9100 lean_main + 488
+KERNEL_BT 23181 23181dyld                                0x000000019b636b98 start + 6076
+FAILED_UNFOLD_TOTAL 52228
+FAILED_UNFOLD_DISTINCT 73
+FAILED_UNFOLD 11559 Nat.rec
+FAILED_UNFOLD 5781 _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1
+FAILED_UNFOLD 5780 Polynomial.casesOn
+FAILED_UNFOLD 5779 HMul.hMul
+FAILED_UNFOLD 5779 Mul.mul
+FAILED_UNFOLD 5779 Nat.casesOn
+FAILED_UNFOLD 5779 npowRec._f
+FAILED_UNFOLD 5779 npowRec.match_1
+FAILED_UNFOLD 20 DivisionSemiring.toSemiring
+FAILED_UNFOLD 15 KoalaBear.Field
+FAILED_UNFOLD 12 OfNat.ofNat
+FAILED_UNFOLD 11 CommSemiring.toSemiring
+FAILED_UNFOLD 10 Ring.toSemiring
+FAILED_UNFOLD 9 Semifield.toCommSemiring
+FAILED_UNFOLD 8 Pow.pow
+FAILED_UNFOLD 7 HPow.hPow
+FAILED_UNFOLD 7 HSub.hSub
+FAILED_UNFOLD 6 Add.add
+FAILED_UNFOLD 6 HAdd.hAdd
+FAILED_UNFOLD 6 Semifield.toDivisionSemiring
+FAILED_UNFOLD 6 instOfNatNat
+FAILED_UNFOLD 5 CommRing.toRing
+FAILED_UNFOLD 4 NPow.npow
+FAILED_UNFOLD 4 outParam
+FAILED_UNFOLD 3 Field.toCommRing
+FAILED_UNFOLD 3 Field.toSemifield
+FAILED_UNFOLD 3 NatPow.pow
+FAILED_UNFOLD 3 Sub.sub
+FAILED_UNFOLD 3 ZMod.commRing
+FAILED_UNFOLD 3 inferInstance
+FAILED_UNFOLD 3 instHAdd
+FAILED_UNFOLD 3 instHPow
+FAILED_UNFOLD 3 instHSub
+FAILED_UNFOLD 2 DivisionRing.toRing
+FAILED_UNFOLD 2 Dvd.dvd
+FAILED_UNFOLD 2 KoalaBear.fieldSize
+FAILED_UNFOLD 2 KoalaBear.instFieldField
+FAILED_UNFOLD 2 Monoid.toNPow
+FAILED_UNFOLD 2 NPow.toPow
+FAILED_UNFOLD 2 Polynomial.instAdd
+FAILED_UNFOLD 2 Polynomial.instSub
+FAILED_UNFOLD 2 ZMod.instField
+FAILED_UNFOLD 2 semigroupDvd
+FAILED_UNFOLD 1 AddCancelCommMonoid.toAddCommMonoid
+FAILED_UNFOLD 1 AddCommMonoid.toAddMonoid
+FAILED_UNFOLD 1 AddMonoid.toAddZeroClass
+FAILED_UNFOLD 1 AddMonoid.toZero
+FAILED_UNFOLD 1 AddZero.toZero
+FAILED_UNFOLD 1 AddZeroClass.toAddZero
+FAILED_UNFOLD 1 CommMonoid.toMonoid
+FAILED_UNFOLD 1 CommRing.toCommSemiring
+FAILED_UNFOLD 1 Field.toDivisionRing
+FAILED_UNFOLD 1 MulZeroClass.toZero
+FAILED_UNFOLD 1 NPow.ofPow
+FAILED_UNFOLD 1 Nat.brecOn
+FAILED_UNFOLD 1 Nat.brecOn.go
+FAILED_UNFOLD 1 Nat.instAddCancelCommMonoid
+FAILED_UNFOLD 1 Nat.instAddCommMonoid
+FAILED_UNFOLD 1 Nat.instAddMonoid
+FAILED_UNFOLD 1 Nat.instCommMonoid
+FAILED_UNFOLD 1 Nat.instMonoid
+FAILED_UNFOLD 1 Nat.instMulZeroClass
+FAILED_UNFOLD 1 Polynomial.instMul
+FAILED_UNFOLD 1 Polynomial.pow
+FAILED_UNFOLD 1 Polynomial.semiring
+FAILED_UNFOLD 1 Semiring.toMonoid
+FAILED_UNFOLD 1 Zero.ofOfNat0
+FAILED_UNFOLD 1 instAddNat
+FAILED_UNFOLD 1 instHMul
+FAILED_UNFOLD 1 instNatPowNat
+FAILED_UNFOLD 1 instPowNat
+FAILED_UNFOLD 1 instSubNat
+FAILED_UNFOLD 1 npowRec
+FAILED_UNFOLD_WATCH Fintype.card 0
+FAILED_UNFOLD_WATCH Fintype.elems 0
+FAILED_UNFOLD_WATCH ZMod.card 0
+FAILED_UNFOLD_WATCH ZMod.fintype 0
+FAILED_UNFOLD_WATCH Eq.mp 0
+FAILED_UNFOLD_WATCH Eq.mpr 0
+FAILED_UNFOLD_WATCH Eq.rec 0
+FAILED_UNFOLD_WATCH Eq.ndrec 0
+FAILED_UNFOLD_WATCH congrArg 0
+FAILED_UNFOLD_LAST Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec npowRec._f npowRec.match_1 Nat.casesOn Nat.rec HMul.hMul Mul.mul _private.Mathlib.Algebra.Polynomial.Basic.0.Polynomial.instAdd.match_1 Polynomial.casesOn Nat.rec
+target failed in 5188 ms: while replaying declaration 'KoalaBear.sexticPoly_irreducible':
+(kernel) deep recursion detected
+kernel unfolded 0 distinct declarations
+kernel unfold events: 0
+uncaught exception: while replaying declaration 'KoalaBear.sexticPoly_irreducible':
+(kernel) deep recursion detected

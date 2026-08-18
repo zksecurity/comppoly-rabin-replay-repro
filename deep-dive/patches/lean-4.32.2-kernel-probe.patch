@@ -1,0 +1,815 @@
+diff --git a/src/kernel/environment.cpp b/src/kernel/environment.cpp
+index 5420c96..3096b01 100644
+--- a/src/kernel/environment.cpp
++++ b/src/kernel/environment.cpp
+@@ -7,6 +7,8 @@ Author: Leonardo de Moura
+ #include <utility>
+ #include <vector>
+ #include <limits>
++#include <algorithm>
++#include <unordered_map>
+ #include "runtime/sstream.h"
+ #include "runtime/thread.h"
+ #include "runtime/sharecommon.h"
+@@ -18,6 +20,52 @@ Author: Leonardo de Moura
+ #include "kernel/quot.h"
+ 
+ namespace lean {
++namespace {
++struct replay_unfold_trace {
++    bool active{false};
++    uint64_t total{0};
++    std::unordered_map<std::string, uint64_t> counts;
++    std::vector<std::string> last;
++    size_t next_last{0};
++};
++
++thread_local replay_unfold_trace g_replay_unfold_trace;
++
++void reset_replay_unfold_trace(bool active) {
++    auto & trace = g_replay_unfold_trace;
++    trace.active = active;
++    trace.total = 0;
++    trace.counts.clear();
++    trace.last.clear();
++    trace.next_last = 0;
++}
++
++void dump_replay_unfold_trace() {
++    auto const & trace = g_replay_unfold_trace;
++    std::vector<std::pair<std::string, uint64_t>> entries(trace.counts.begin(), trace.counts.end());
++    std::sort(entries.begin(), entries.end(), [](auto const & a, auto const & b) {
++        return a.second > b.second || (a.second == b.second && a.first < b.first);
++    });
++    std::cerr << "FAILED_UNFOLD_TOTAL " << trace.total << std::endl;
++    std::cerr << "FAILED_UNFOLD_DISTINCT " << entries.size() << std::endl;
++    for (auto const & entry : entries)
++        std::cerr << "FAILED_UNFOLD " << entry.second << " " << entry.first << std::endl;
++    for (char const * watched : {"Fintype.card", "Fintype.elems", "ZMod.card", "ZMod.fintype",
++                                 "Eq.mp", "Eq.mpr", "Eq.rec", "Eq.ndrec", "congrArg"}) {
++        auto it = trace.counts.find(watched);
++        std::cerr << "FAILED_UNFOLD_WATCH " << watched << " "
++                  << (it == trace.counts.end() ? 0 : it->second) << std::endl;
++    }
++    std::cerr << "FAILED_UNFOLD_LAST";
++    if (trace.last.size() < 64) {
++        for (auto const & name : trace.last) std::cerr << " " << name;
++    } else {
++        for (size_t i = 0; i < trace.last.size(); ++i)
++            std::cerr << " " << trace.last[(trace.next_last + i) % trace.last.size()];
++    }
++    std::cerr << std::endl;
++}
++}
+ extern "C" object* lean_environment_add(object*, object*);
+ extern "C" object* lean_environment_find(object*, object*);
+ extern "C" object* lean_environment_mark_quot_init(object*);
+@@ -28,6 +76,18 @@ extern "C" object* lean_kernel_set_diag(object*, object*);
+ extern "C" uint8* lean_kernel_diag_is_enabled(object*);
+ 
+ void diagnostics::record_unfold(name const & decl_name) {
++    auto & trace = g_replay_unfold_trace;
++    if (trace.active) {
++        std::string key = decl_name.to_string();
++        ++trace.total;
++        ++trace.counts[key];
++        if (trace.last.size() < 64) {
++            trace.last.push_back(key);
++        } else {
++            trace.last[trace.next_last] = key;
++            trace.next_last = (trace.next_last + 1) % trace.last.size();
++        }
++    }
+     m_obj = lean_kernel_record_unfold(m_obj, decl_name.to_obj_arg());
+ }
+ 
+@@ -192,18 +252,36 @@ environment environment::add_definition(declaration const & d, bool check) const
+ environment environment::add_theorem(declaration const & d, bool check) const {
+     scoped_diagnostics diag(*this, check);
+     theorem_val const & v = d.to_theorem_val();
++    bool trace_this = v.get_name().to_string() == "KoalaBear.sexticPoly_irreducible";
++    if (trace_this) {
++        reset_replay_unfold_trace(true);
++        reset_kernel_whnf_probe(true);
++    }
+     if (check) {
++        if (trace_this) std::cerr << "THEOREM_PHASE begin" << std::endl;
+         type_checker checker(*this, diag.get());
+         sharecommon_persistent_fn share;
++        if (trace_this) std::cerr << "THEOREM_PHASE share-value" << std::endl;
+         expr val(share(v.get_value().raw()));
++        if (trace_this) std::cerr << "THEOREM_PHASE share-type" << std::endl;
+         expr type(share(v.get_type().raw()));
++        if (trace_this) std::cerr << "THEOREM_PHASE check-header" << std::endl;
+         check_constant_val(*this, v.to_constant_val(), checker);
++        if (trace_this) std::cerr << "THEOREM_PHASE is-prop" << std::endl;
+         if (!checker.is_prop(type))
+             throw theorem_type_is_not_prop(*this, v.get_name(), type);
++        if (trace_this) std::cerr << "THEOREM_PHASE no-mvar-fvar" << std::endl;
+         check_no_metavar_no_fvar(*this, v.get_name(), val);
++        if (trace_this) std::cerr << "THEOREM_PHASE check-body" << std::endl;
+         expr val_type = checker.check(val, v.get_lparams());
++        if (trace_this) std::cerr << "THEOREM_PHASE final-defeq" << std::endl;
+         if (!checker.is_def_eq(val_type, type))
+             throw definition_type_mismatch_exception(*this, d, val_type);
++        if (trace_this) {
++            dump_kernel_whnf_probe();
++            dump_replay_unfold_trace();
++        }
++        if (trace_this) std::cerr << "THEOREM_PHASE checked" << std::endl;
+     }
+     return diag.update(add(constant_info(d)));
+ }
+@@ -278,7 +356,14 @@ extern "C" LEAN_EXPORT object * lean_add_decl(object * env, size_t max_heartbeat
+     scope_max_heartbeat s(max_heartbeat);
+     scope_cancel_tk s2(is_scalar(opt_cancel_tk) ? nullptr : cnstr_get(opt_cancel_tk, 0));
+     return catch_kernel_exceptions<environment>([&]() {
+-            return environment(env).add(declaration(decl, true));
++            try {
++                return environment(env).add(declaration(decl, true));
++            } catch (stack_space_exception & ex) {
++                std::cerr << "STACK_COMPONENT " << ex.what() << std::endl;
++                dump_kernel_whnf_probe();
++                dump_replay_unfold_trace();
++                throw;
++            }
+         });
+ }
+ 
+diff --git a/src/kernel/equiv_manager.cpp b/src/kernel/equiv_manager.cpp
+index d5dfee8..cd22db8 100644
+--- a/src/kernel/equiv_manager.cpp
++++ b/src/kernel/equiv_manager.cpp
+@@ -27,6 +27,23 @@ auto equiv_manager::find(node_ref n) -> node_ref {
+     }
+ }
+ 
++auto equiv_manager::find_const(node_ref n) const -> node_ref {
++    while (true) {
++        node_ref p = m_nodes[n].m_parent;
++        if (p == n)
++            return p;
++        n = p;
++    }
++}
++
++bool equiv_manager::is_cached_equiv(expr const & a, expr const & b) const {
++    auto ita = m_to_node.find(a);
++    if (ita == m_to_node.end()) return false;
++    auto itb = m_to_node.find(b);
++    if (itb == m_to_node.end()) return false;
++    return find_const(ita->second) == find_const(itb->second);
++}
++
+ void equiv_manager::merge(node_ref n1, node_ref n2) {
+     node_ref r1 = find(n1);
+     node_ref r2 = find(n2);
+diff --git a/src/kernel/equiv_manager.h b/src/kernel/equiv_manager.h
+index be440ea..95614f2 100644
+--- a/src/kernel/equiv_manager.h
++++ b/src/kernel/equiv_manager.h
+@@ -23,11 +23,16 @@ class equiv_manager {
+ 
+     node_ref mk_node();
+     node_ref find(node_ref n);
++    node_ref find_const(node_ref n) const;
+     void merge(node_ref n1, node_ref n2);
+     node_ref to_node(expr const & e);
+     bool is_equiv_core(expr const & e1, expr const & e2);
+ public:
+     equiv_manager():m_use_hash(false) {}
++    /** Return true only when both expressions already have nodes in the
++        persistent equivalence relation and those nodes are in the same class.
++        Unlike `is_equiv`, this query does not create nodes or compare structure. */
++    bool is_cached_equiv(expr const & e1, expr const & e2) const;
+     bool is_equiv(expr const & e1, expr const & e2, bool use_hash = false);
+     void add_equiv(expr const & e1, expr const & e2);
+ };
+diff --git a/src/kernel/type_checker.cpp b/src/kernel/type_checker.cpp
+index e8b1ff5..279c96a 100644
+--- a/src/kernel/type_checker.cpp
++++ b/src/kernel/type_checker.cpp
+@@ -6,6 +6,12 @@ Author: Leonardo de Moura
+ */
+ #include <utility>
+ #include <vector>
++#include <string>
++#include <algorithm>
++#include <cstdlib>
++#include <sstream>
++#include <memory>
++#include <execinfo.h>
+ #include "runtime/interrupt.h"
+ #include "runtime/sstream.h"
+ #include "runtime/flet.h"
+@@ -21,6 +27,269 @@ Author: Leonardo de Moura
+ #include "kernel/inductive.h"
+ 
+ namespace lean {
++namespace {
++struct kernel_whnf_probe_state {
++    bool active{false};
++    uint64_t entries{0};
++    uint64_t current_depth{0};
++    uint64_t max_depth{0};
++    uint64_t app_entries{0};
++    uint64_t beta_steps{0};
++    uint64_t let_steps{0};
++    uint64_t proj_steps{0};
++    uint64_t recursor_steps{0};
++    uint64_t delta_steps{0};
++    uint64_t nat_steps{0};
++    uint64_t infer_cache_hits{0};
++    uint64_t infer_cache_misses{0};
++    uint64_t whnf_core_cache_hits{0};
++    uint64_t whnf_core_cache_misses{0};
++    uint64_t whnf_cache_hits{0};
++    uint64_t whnf_cache_misses{0};
++    uint64_t unfold_cache_hits{0};
++    uint64_t unfold_cache_misses{0};
++    uint64_t eqv_quick_calls{0};
++    uint64_t eqv_quick_true{0};
++    uint64_t eqv_add_attempts{0};
++    uint64_t eqv_add_actual{0};
++    uint64_t watched_defeqs{0};
++    uint64_t watched_cached_hits{0};
++    uint64_t watched_cached_ignored{0};
++    uint64_t watched_initial_cached_hits{0};
++    uint64_t failure_cache_hits{0};
++    uint64_t failure_cache_misses{0};
++    uint64_t failure_cache_adds{0};
++    bool disable_whnf_cache{false};
++    bool disable_infer_cache{false};
++    bool disable_unfold_cache{false};
++    bool disable_eqv_add{false};
++    bool disable_eqv_state{false};
++    bool disable_failure_cache{false};
++    bool ignore_watched_commsemiring_cache{false};
++    bool reset_eqv_before_transport{false};
++    bool watch_defeq{false};
++    optional<expr> watched_root_given;
++    optional<expr> watched_root_expected;
++    optional<expr> first_watched_cached_left;
++    optional<expr> first_watched_cached_right;
++    optional<expr> first_watched_ignored_left;
++    optional<expr> first_watched_ignored_right;
++    std::vector<std::pair<expr, expr>> watched_cached_pairs;
++    std::vector<std::pair<expr, expr>> watched_initial_cached_pairs;
++    std::shared_ptr<equiv_manager> watched_initial_eqv;
++    uint64_t failed_depth{0};
++    optional<expr> failed_expr;
++    std::vector<void *> failed_backtrace;
++    std::string failed_infer_phase;
++    optional<expr> failed_infer_app;
++    optional<expr> failed_infer_arg_type;
++    optional<expr> failed_infer_expected_type;
++    std::vector<std::string> recent;
++    size_t next_recent{0};
++};
++
++thread_local kernel_whnf_probe_state g_kernel_whnf_probe;
++
++char const * expr_kind_name(expr_kind kind) {
++    switch (kind) {
++    case expr_kind::BVar: return "BVar";
++    case expr_kind::Sort: return "Sort";
++    case expr_kind::Const: return "Const";
++    case expr_kind::MVar: return "MVar";
++    case expr_kind::FVar: return "FVar";
++    case expr_kind::App: return "App";
++    case expr_kind::Lambda: return "Lambda";
++    case expr_kind::Pi: return "Pi";
++    case expr_kind::Let: return "Let";
++    case expr_kind::Lit: return "Lit";
++    case expr_kind::MData: return "MData";
++    case expr_kind::Proj: return "Proj";
++    }
++    return "Unknown";
++}
++
++std::string shallow_expr_description(expr const & e) {
++    expr f = e;
++    size_t nargs = 0;
++    while (is_app(f)) {
++        ++nargs;
++        f = app_fn(f);
++    }
++    std::string result(expr_kind_name(e.kind()));
++    if (is_constant(f)) {
++        result += ":";
++        result += const_name(f).to_string();
++    } else if (f.kind() != e.kind()) {
++        result += ":head-";
++        result += expr_kind_name(f.kind());
++    }
++    if (nargs) {
++        result += "/";
++        result += std::to_string(nargs);
++    }
++    return result;
++}
++
++bool has_head_constant(expr const & e, char const * expected) {
++    expr f = get_app_fn(e);
++    return is_constant(f) && const_name(f).to_string() == expected;
++}
++
++struct kernel_whnf_probe_scope {
++    bool active;
++    kernel_whnf_probe_scope(expr const & e):active(g_kernel_whnf_probe.active) {
++        if (!active) return;
++        auto & probe = g_kernel_whnf_probe;
++        ++probe.entries;
++        ++probe.current_depth;
++        if (probe.current_depth > probe.max_depth) probe.max_depth = probe.current_depth;
++        if (e.kind() == expr_kind::App) ++probe.app_entries;
++        std::string description = shallow_expr_description(e);
++        if (probe.recent.size() < 64) {
++            probe.recent.push_back(std::move(description));
++        } else {
++            probe.recent[probe.next_recent] = std::move(description);
++            probe.next_recent = (probe.next_recent + 1) % probe.recent.size();
++        }
++    }
++    ~kernel_whnf_probe_scope() {
++        if (active) --g_kernel_whnf_probe.current_depth;
++    }
++};
++
++void print_expr_shape(char const * label, expr const & e) {
++    std::cerr << label << " " << shallow_expr_description(e) << " hash=" << hash(e);
++    if (is_app(e)) {
++        expr const & last = app_arg(e);
++        std::cerr << " last=" << shallow_expr_description(last);
++        if (is_app(app_fn(e)))
++            std::cerr << " prev=" << shallow_expr_description(app_arg(app_fn(e)));
++    }
++    std::cerr << std::endl;
++}
++
++void print_expr_bounded(char const * label, expr const & e) {
++    std::ostringstream out;
++    out << e;
++    std::string value = out.str();
++    constexpr size_t limit = 12000;
++    std::cerr << label << " ";
++    if (value.size() <= limit) {
++        std::cerr << value;
++    } else {
++        std::cerr << value.substr(0, limit) << " ...[truncated " << (value.size() - limit) << " chars]";
++    }
++    std::cerr << std::endl;
++}
++}
++
++void reset_kernel_whnf_probe(bool active) {
++    g_kernel_whnf_probe = kernel_whnf_probe_state();
++    g_kernel_whnf_probe.active = active;
++    g_kernel_whnf_probe.disable_whnf_cache = std::getenv("LEAN_PROBE_NO_WHNF_CACHE") != nullptr;
++    g_kernel_whnf_probe.disable_infer_cache = std::getenv("LEAN_PROBE_NO_INFER_CACHE") != nullptr;
++    g_kernel_whnf_probe.disable_unfold_cache = std::getenv("LEAN_PROBE_NO_UNFOLD_CACHE") != nullptr;
++    g_kernel_whnf_probe.disable_eqv_add = std::getenv("LEAN_PROBE_NO_EQV_ADD") != nullptr;
++    g_kernel_whnf_probe.disable_eqv_state = std::getenv("LEAN_PROBE_NO_EQV_STATE") != nullptr;
++    g_kernel_whnf_probe.disable_failure_cache = std::getenv("LEAN_PROBE_NO_FAILURE_CACHE") != nullptr;
++    g_kernel_whnf_probe.ignore_watched_commsemiring_cache =
++        std::getenv("LEAN_PROBE_IGNORE_WATCHED_COMMSEMIRING_CACHE") != nullptr;
++    g_kernel_whnf_probe.reset_eqv_before_transport =
++        std::getenv("LEAN_PROBE_RESET_EQV_BEFORE_TRANSPORT") != nullptr;
++}
++
++void record_infer_failure(char const * phase, expr const & app,
++                          optional<expr> const & arg_type = optional<expr>(),
++                          optional<expr> const & expected_type = optional<expr>()) {
++    auto & probe = g_kernel_whnf_probe;
++    if (!probe.active || !probe.failed_infer_phase.empty()) return;
++    probe.failed_infer_phase = phase;
++    probe.failed_infer_app = optional<expr>(app);
++    probe.failed_infer_arg_type = arg_type;
++    probe.failed_infer_expected_type = expected_type;
++}
++
++void dump_kernel_whnf_probe() {
++    auto const & probe = g_kernel_whnf_probe;
++    std::cerr << "WHNF_ENTRIES " << probe.entries << std::endl;
++    std::cerr << "WHNF_MAX_NESTED_CALLS " << probe.max_depth << std::endl;
++    std::cerr << "WHNF_FAILED_DEPTH " << probe.failed_depth << std::endl;
++    std::cerr << "WHNF_APP_ENTRIES " << probe.app_entries << std::endl;
++    std::cerr << "WHNF_BETA_STEPS " << probe.beta_steps << std::endl;
++    std::cerr << "WHNF_LET_STEPS " << probe.let_steps << std::endl;
++    std::cerr << "WHNF_PROJ_STEPS " << probe.proj_steps << std::endl;
++    std::cerr << "WHNF_RECURSOR_STEPS " << probe.recursor_steps << std::endl;
++    std::cerr << "WHNF_DELTA_STEPS " << probe.delta_steps << std::endl;
++    std::cerr << "WHNF_NAT_STEPS " << probe.nat_steps << std::endl;
++    std::cerr << "INFER_CACHE hit=" << probe.infer_cache_hits << " miss=" << probe.infer_cache_misses
++              << " disabled=" << probe.disable_infer_cache << std::endl;
++    std::cerr << "WHNF_CORE_CACHE hit=" << probe.whnf_core_cache_hits << " miss=" << probe.whnf_core_cache_misses
++              << " disabled=" << probe.disable_whnf_cache << std::endl;
++    std::cerr << "WHNF_CACHE hit=" << probe.whnf_cache_hits << " miss=" << probe.whnf_cache_misses
++              << " disabled=" << probe.disable_whnf_cache << std::endl;
++    std::cerr << "UNFOLD_CACHE hit=" << probe.unfold_cache_hits << " miss=" << probe.unfold_cache_misses
++              << " disabled=" << probe.disable_unfold_cache << std::endl;
++    std::cerr << "EQV_QUICK calls=" << probe.eqv_quick_calls << " true=" << probe.eqv_quick_true
++              << " no-add=" << probe.disable_eqv_add << " isolated=" << probe.disable_eqv_state << std::endl;
++    std::cerr << "EQV_ADD attempts=" << probe.eqv_add_attempts << " actual=" << probe.eqv_add_actual << std::endl;
++    std::cerr << "WATCHED_DEFEQ calls=" << probe.watched_defeqs
++              << " cached-hits=" << probe.watched_cached_hits
++              << " initial-cached-hits=" << probe.watched_initial_cached_hits
++              << " ignored=" << probe.watched_cached_ignored
++              << " reset-before=" << probe.reset_eqv_before_transport << std::endl;
++    if (probe.watched_root_given) print_expr_bounded("WATCHED_ROOT_GIVEN", *probe.watched_root_given);
++    if (probe.watched_root_expected) print_expr_bounded("WATCHED_ROOT_EXPECTED", *probe.watched_root_expected);
++    if (probe.first_watched_cached_left) print_expr_bounded("WATCHED_FIRST_CACHED_LEFT", *probe.first_watched_cached_left);
++    if (probe.first_watched_cached_right) print_expr_bounded("WATCHED_FIRST_CACHED_RIGHT", *probe.first_watched_cached_right);
++    if (probe.first_watched_ignored_left) print_expr_bounded("WATCHED_IGNORED_LEFT", *probe.first_watched_ignored_left);
++    if (probe.first_watched_ignored_right) print_expr_bounded("WATCHED_IGNORED_RIGHT", *probe.first_watched_ignored_right);
++    for (size_t i = 0; i < probe.watched_cached_pairs.size(); ++i) {
++        auto const & pair = probe.watched_cached_pairs[i];
++        std::cerr << "WATCHED_CACHED_PAIR " << i
++                  << " left=" << shallow_expr_description(pair.first) << " hash=" << hash(pair.first)
++                  << " right=" << shallow_expr_description(pair.second) << " hash=" << hash(pair.second)
++                  << std::endl;
++    }
++    for (size_t i = 0; i < probe.watched_initial_cached_pairs.size(); ++i) {
++        auto const & pair = probe.watched_initial_cached_pairs[i];
++        std::cerr << "WATCHED_INITIAL_CACHED_PAIR " << i
++                  << " left=" << shallow_expr_description(pair.first) << " hash=" << hash(pair.first)
++                  << " right=" << shallow_expr_description(pair.second) << " hash=" << hash(pair.second)
++                  << std::endl;
++    }
++    std::cerr << "FAILURE_CACHE hit=" << probe.failure_cache_hits << " miss=" << probe.failure_cache_misses
++              << " adds=" << probe.failure_cache_adds << " disabled=" << probe.disable_failure_cache << std::endl;
++    if (probe.failed_expr) print_expr_shape("WHNF_FAILED_EXPR", *probe.failed_expr);
++    if (!probe.failed_infer_phase.empty()) {
++        std::cerr << "INFER_FAILURE_PHASE " << probe.failed_infer_phase << std::endl;
++        if (probe.failed_infer_app) print_expr_shape("INFER_FAILURE_APP", *probe.failed_infer_app);
++        if (probe.failed_infer_arg_type) print_expr_shape("INFER_FAILURE_GIVEN_TYPE", *probe.failed_infer_arg_type);
++        if (probe.failed_infer_expected_type) print_expr_shape("INFER_FAILURE_EXPECTED_TYPE", *probe.failed_infer_expected_type);
++    }
++    std::cerr << "WHNF_RECENT";
++    if (probe.recent.size() < 64) {
++        for (auto const & description : probe.recent) std::cerr << " " << description;
++    } else {
++        for (size_t i = 0; i < probe.recent.size(); ++i)
++            std::cerr << " " << probe.recent[(probe.next_recent + i) % probe.recent.size()];
++    }
++    std::cerr << std::endl;
++    if (!probe.failed_backtrace.empty()) {
++        char ** symbols = backtrace_symbols(probe.failed_backtrace.data(), static_cast<int>(probe.failed_backtrace.size()));
++        if (symbols) {
++            std::cerr << "KERNEL_BACKTRACE_FRAMES " << probe.failed_backtrace.size() << std::endl;
++            size_t front = std::min<size_t>(48, probe.failed_backtrace.size());
++            size_t tail_start = probe.failed_backtrace.size() > 128 ? probe.failed_backtrace.size() - 128 : front;
++            for (size_t i = 0; i < front; ++i)
++                std::cerr << "KERNEL_BT " << i << " " << symbols[i] << std::endl;
++            if (tail_start > front) std::cerr << "KERNEL_BT_OMITTED " << (tail_start - front) << std::endl;
++            for (size_t i = tail_start; i < probe.failed_backtrace.size(); ++i)
++                std::cerr << "KERNEL_BT " << i << " " << symbols[i] << std::endl;
++            std::free(symbols);
++        }
++    }
++}
++
+ static name * g_kernel_fresh = nullptr;
+ static expr * g_dont_care    = nullptr;
+ static name * g_bool_true    = nullptr;
+@@ -162,16 +431,49 @@ static bool is_eager_reduce(expr const & e) {
+ 
+ expr type_checker::infer_app(expr const & e, bool infer_only) {
+     if (!infer_only) {
+-        expr f_type = ensure_pi_core(infer_type_core(app_fn(e), infer_only), e);
+-        expr a_type = infer_type_core(app_arg(e), infer_only);
++        expr f_type;
++        try {
++            f_type = ensure_pi_core(infer_type_core(app_fn(e), infer_only), e);
++        } catch (stack_space_exception &) {
++            record_infer_failure("infer-function", e);
++            throw;
++        }
++        expr a_type;
++        try {
++            a_type = infer_type_core(app_arg(e), infer_only);
++        } catch (stack_space_exception &) {
++            record_infer_failure("infer-argument", e);
++            throw;
++        }
+         expr d_type = binding_domain(f_type);
+-        if (is_eager_reduce(app_arg(e))) {
+-            // If argument is of the form `eagerReduce`, set m_eager_reduction mode
+-            flet<bool> scope(m_eager_reduce, true);
+-            if (!is_def_eq(a_type, d_type)) {
+-                throw app_type_mismatch_exception(env(), m_lctx, e, f_type, a_type);
++        bool types_match;
++        expr app_head = get_app_fn(e);
++        bool watch_transport = is_constant(app_head) && const_name(app_head).to_string() == "Eq.mpr" &&
++                               get_app_num_args(e) == 4;
++        if (watch_transport && g_kernel_whnf_probe.active) {
++            ++g_kernel_whnf_probe.watched_defeqs;
++            g_kernel_whnf_probe.watched_root_given = optional<expr>(a_type);
++            g_kernel_whnf_probe.watched_root_expected = optional<expr>(d_type);
++            g_kernel_whnf_probe.watched_initial_eqv =
++                std::make_shared<equiv_manager>(m_st->m_eqv_manager);
++            if (g_kernel_whnf_probe.reset_eqv_before_transport)
++                m_st->m_eqv_manager = equiv_manager();
++        }
++        try {
++            flet<bool> watch_scope(g_kernel_whnf_probe.watch_defeq,
++                                   g_kernel_whnf_probe.watch_defeq || watch_transport);
++            if (is_eager_reduce(app_arg(e))) {
++                // If argument is of the form `eagerReduce`, set m_eager_reduction mode
++                flet<bool> scope(m_eager_reduce, true);
++                types_match = is_def_eq(a_type, d_type);
++            } else {
++                types_match = is_def_eq(a_type, d_type);
+             }
+-        } else if (!is_def_eq(a_type, d_type)) {
++        } catch (stack_space_exception &) {
++            record_infer_failure("argument-defeq", e, optional<expr>(a_type), optional<expr>(d_type));
++            throw;
++        }
++        if (!types_match) {
+             throw app_type_mismatch_exception(env(), m_lctx, e, f_type, a_type);
+         }
+         return instantiate(binding_body(f_type), app_arg(e));
+@@ -274,8 +576,12 @@ expr type_checker::infer_type_core(expr const & e, bool infer_only) {
+     check_system("type checker", /* do_check_interrupted */ true);
+ 
+     auto it = m_st->m_infer_type[infer_only].find(e);
+-    if (it != m_st->m_infer_type[infer_only].end())
+-        return it->second;
++    if (it != m_st->m_infer_type[infer_only].end()) {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.infer_cache_hits;
++        if (!g_kernel_whnf_probe.disable_infer_cache) return it->second;
++    } else if (g_kernel_whnf_probe.active) {
++        ++g_kernel_whnf_probe.infer_cache_misses;
++    }
+ 
+     expr r;
+     switch (e.kind()) {
+@@ -297,7 +603,8 @@ expr type_checker::infer_type_core(expr const & e, bool infer_only) {
+     case expr_kind::Let:      r = infer_let(e, infer_only);            break;
+     }
+ 
+-    m_st->m_infer_type[infer_only].insert(mk_pair(e, r));
++    if (!g_kernel_whnf_probe.disable_infer_cache)
++        m_st->m_infer_type[infer_only].insert(mk_pair(e, r));
+     return r;
+ }
+ 
+@@ -399,7 +706,20 @@ static bool is_let_fvar(local_ctx const & lctx, expr const & e) {
+     If `cheap == true`, then we don't perform delta-reduction when reducing major premise of recursors and projections.
+     We also do not cache results. */
+ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+-    check_system("type checker: whnf", /* do_check_interrupted */ true);
++    kernel_whnf_probe_scope probe_scope(e);
++    try {
++        check_system("type checker: whnf", /* do_check_interrupted */ true);
++    } catch (stack_space_exception &) {
++        auto & probe = g_kernel_whnf_probe;
++        if (probe.active && !probe.failed_expr) {
++            probe.failed_depth = probe.current_depth;
++            probe.failed_expr = optional<expr>(e);
++            probe.failed_backtrace.resize(100000);
++            int count = backtrace(probe.failed_backtrace.data(), static_cast<int>(probe.failed_backtrace.size()));
++            probe.failed_backtrace.resize(count > 0 ? static_cast<size_t>(count) : 0);
++        }
++        throw;
++    }
+ 
+     // handle easy cases
+     switch (e.kind()) {
+@@ -421,8 +741,12 @@ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+ 
+     // check cache
+     auto it = m_st->m_whnf_core.find(e);
+-    if (it != m_st->m_whnf_core.end())
+-        return it->second;
++    if (it != m_st->m_whnf_core.end()) {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.whnf_core_cache_hits;
++        if (!g_kernel_whnf_probe.disable_whnf_cache) return it->second;
++    } else if (g_kernel_whnf_probe.active) {
++        ++g_kernel_whnf_probe.whnf_core_cache_misses;
++    }
+ 
+     // do the actual work
+     expr r;
+@@ -434,6 +758,7 @@ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+     case expr_kind::FVar:
+         return whnf_fvar(e, cheap_rec, cheap_proj);
+     case expr_kind::Proj: {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.proj_steps;
+         if (auto m = reduce_proj(e, cheap_rec, cheap_proj))
+             r = whnf_core(*m, cheap_rec, cheap_proj);
+         else
+@@ -445,6 +770,7 @@ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+         expr f0 = get_app_rev_args(e, args);
+         expr f = whnf_core(f0, cheap_rec, cheap_proj);
+         if (is_lambda(f)) {
++            if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.beta_steps;
+             unsigned m = 1;
+             unsigned num_args = args.size();
+             while (is_lambda(binding_body(f)) && m < num_args) {
+@@ -456,6 +782,7 @@ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+                           cheap_rec, cheap_proj);
+         } else if (f == f0) {
+             if (auto r = reduce_recursor(e, cheap_rec, cheap_proj)) {
++                if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.recursor_steps;
+                 if (m_diag) {
+                     auto f = get_app_fn(e);
+                     if (is_constant(f))
+@@ -472,12 +799,14 @@ expr type_checker::whnf_core(expr const & e, bool cheap_rec, bool cheap_proj) {
+         break;
+     }
+     case expr_kind::Let:
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.let_steps;
+         r = whnf_core(instantiate(let_body(e), let_value(e)), cheap_rec, cheap_proj);
+         break;
+     }
+ 
+     if (!cheap_rec && !cheap_proj) {
+-        m_st->m_whnf_core.insert(mk_pair(e, r));
++        if (!g_kernel_whnf_probe.disable_whnf_cache)
++            m_st->m_whnf_core.insert(mk_pair(e, r));
+     }
+     return r;
+ }
+@@ -497,6 +826,7 @@ optional<constant_info> type_checker::is_delta(expr const & e) const {
+ optional<expr> type_checker::unfold_definition_core(expr const & e) {
+     if (is_constant(e)) {
+         if (auto d = is_delta(e)) {
++            if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.delta_steps;
+             levels const & us = const_levels(e);
+             unsigned len = length(us);
+             if (m_diag) {
+@@ -504,10 +834,14 @@ optional<expr> type_checker::unfold_definition_core(expr const & e) {
+             }
+             if (len > 0) {
+                 auto it = m_st->m_unfold.find(e);
+-                if (it != m_st->m_unfold.end())
++                if (!g_kernel_whnf_probe.disable_unfold_cache && it != m_st->m_unfold.end()) {
++                    if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.unfold_cache_hits;
+                     return some_expr(it->second);
++                }
++                if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.unfold_cache_misses;
+                 expr result = instantiate_value_lparams(*d, us);
+-                m_st->m_unfold.insert(mk_pair(e, result));
++                if (!g_kernel_whnf_probe.disable_unfold_cache)
++                    m_st->m_unfold.insert(mk_pair(e, result));
+                 return some_expr(result);
+             } else {
+                 return some_expr(instantiate_value_lparams(*d, us));
+@@ -658,23 +992,31 @@ expr type_checker::whnf(expr const & e) {
+ 
+     // check cache
+     auto it = m_st->m_whnf.find(e);
+-    if (it != m_st->m_whnf.end())
+-        return it->second;
++    if (it != m_st->m_whnf.end()) {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.whnf_cache_hits;
++        if (!g_kernel_whnf_probe.disable_whnf_cache) return it->second;
++    } else if (g_kernel_whnf_probe.active) {
++        ++g_kernel_whnf_probe.whnf_cache_misses;
++    }
+ 
+     expr t = e;
+     while (true) {
+         expr t1 = whnf_core(t);
+         if (auto v = reduce_native(env(), t1)) {
+-            m_st->m_whnf.insert(mk_pair(e, *v));
++            if (!g_kernel_whnf_probe.disable_whnf_cache)
++                m_st->m_whnf.insert(mk_pair(e, *v));
+             return *v;
+         } else if (auto v = reduce_nat(t1)) {
+-            m_st->m_whnf.insert(mk_pair(e, *v));
++            if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.nat_steps;
++            if (!g_kernel_whnf_probe.disable_whnf_cache)
++                m_st->m_whnf.insert(mk_pair(e, *v));
+             return *v;
+         } else if (auto next_t = unfold_definition(t1)) {
+             t = *next_t;
+         } else {
+             auto r = t1;
+-            m_st->m_whnf.insert(mk_pair(e, r));
++            if (!g_kernel_whnf_probe.disable_whnf_cache)
++                m_st->m_whnf.insert(mk_pair(e, r));
+             return r;
+         }
+     }
+@@ -738,8 +1080,47 @@ bool type_checker::is_def_eq(levels const & ls1, levels const & ls2) {
+ 
+ /** \brief This is an auxiliary method for is_def_eq. It handles the "easy cases". */
+ lbool type_checker::quick_is_def_eq(expr const & t, expr const & s, bool use_hash) {
+-    if (m_st->m_eqv_manager.is_equiv(t, s, use_hash))
++    if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.eqv_quick_calls;
++    bool watched_cached = g_kernel_whnf_probe.active && g_kernel_whnf_probe.watch_defeq &&
++                          m_st->m_eqv_manager.is_cached_equiv(t, s);
++    bool watched_initial_cached = g_kernel_whnf_probe.active && g_kernel_whnf_probe.watch_defeq &&
++                                  g_kernel_whnf_probe.watched_initial_eqv &&
++                                  g_kernel_whnf_probe.watched_initial_eqv->is_cached_equiv(t, s);
++    if (watched_initial_cached) {
++        ++g_kernel_whnf_probe.watched_initial_cached_hits;
++        if (!is_eqp(t, s) && g_kernel_whnf_probe.watched_initial_cached_pairs.size() < 128)
++            g_kernel_whnf_probe.watched_initial_cached_pairs.emplace_back(t, s);
++    }
++    if (watched_cached) {
++        ++g_kernel_whnf_probe.watched_cached_hits;
++        if (!g_kernel_whnf_probe.first_watched_cached_left) {
++            g_kernel_whnf_probe.first_watched_cached_left = optional<expr>(t);
++            g_kernel_whnf_probe.first_watched_cached_right = optional<expr>(s);
++        }
++        if (!is_eqp(t, s) && g_kernel_whnf_probe.watched_cached_pairs.size() < 128)
++            g_kernel_whnf_probe.watched_cached_pairs.emplace_back(t, s);
++    }
++    bool is_equiv;
++    bool ignore_watched_cache = watched_cached && g_kernel_whnf_probe.ignore_watched_commsemiring_cache &&
++                                has_head_constant(t, "CommSemiring.toSemiring") &&
++                                has_head_constant(s, "CommSemiring.toSemiring");
++    if (ignore_watched_cache) {
++        ++g_kernel_whnf_probe.watched_cached_ignored;
++        if (!g_kernel_whnf_probe.first_watched_ignored_left) {
++            g_kernel_whnf_probe.first_watched_ignored_left = optional<expr>(t);
++            g_kernel_whnf_probe.first_watched_ignored_right = optional<expr>(s);
++        }
++    }
++    if (g_kernel_whnf_probe.disable_eqv_state || ignore_watched_cache) {
++        equiv_manager isolated;
++        is_equiv = isolated.is_equiv(t, s, use_hash);
++    } else {
++        is_equiv = m_st->m_eqv_manager.is_equiv(t, s, use_hash);
++    }
++    if (is_equiv) {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.eqv_quick_true;
+         return l_true;
++    }
+     if (t.kind() == s.kind()) {
+         switch (t.kind()) {
+         case expr_kind::Lambda: case expr_kind::Pi:
+@@ -843,18 +1224,29 @@ lbool type_checker::is_def_eq_proof_irrel(expr const & t, expr const & s) {
+ }
+ 
+ bool type_checker::failed_before(expr const & t, expr const & s) const {
++    if (g_kernel_whnf_probe.disable_failure_cache)
++        return false;
++    bool result;
+     if (hash(t) < hash(s)) {
+-        return m_st->m_failure.find(mk_pair(t, s)) != m_st->m_failure.end();
++        result = m_st->m_failure.find(mk_pair(t, s)) != m_st->m_failure.end();
+     } else if (hash(t) > hash(s)) {
+-        return m_st->m_failure.find(mk_pair(s, t)) != m_st->m_failure.end();
++        result = m_st->m_failure.find(mk_pair(s, t)) != m_st->m_failure.end();
+     } else {
+-        return
++        result =
+             m_st->m_failure.find(mk_pair(t, s)) != m_st->m_failure.end() ||
+             m_st->m_failure.find(mk_pair(s, t)) != m_st->m_failure.end();
+     }
++    if (g_kernel_whnf_probe.active) {
++        if (result) ++g_kernel_whnf_probe.failure_cache_hits;
++        else ++g_kernel_whnf_probe.failure_cache_misses;
++    }
++    return result;
+ }
+ 
+ void type_checker::cache_failure(expr const & t, expr const & s) {
++    if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.failure_cache_adds;
++    if (g_kernel_whnf_probe.disable_failure_cache)
++        return;
+     if (hash(t) <= hash(s))
+         m_st->m_failure.insert(mk_pair(t, s));
+     else
+@@ -977,8 +1369,10 @@ lbool type_checker::lazy_delta_reduction(expr & t_n, expr & s_n) {
+ 
+         if ((!has_fvar(t_n) && !has_fvar(s_n)) || m_eager_reduce) {
+             if (auto t_v = reduce_nat(t_n)) {
++                if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.nat_steps;
+                 return to_lbool(is_def_eq_core(*t_v, s_n));
+             } else if (auto s_v = reduce_nat(s_n)) {
++                if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.nat_steps;
+                 return to_lbool(is_def_eq_core(t_n, *s_v));
+             }
+         }
+@@ -1132,8 +1526,11 @@ bool type_checker::is_def_eq_core(expr const & t, expr const & s) {
+ 
+ bool type_checker::is_def_eq(expr const & t, expr const & s) {
+     bool r = is_def_eq_core(t, s);
+-    if (r)
++    if (r && g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.eqv_add_attempts;
++    if (r && !g_kernel_whnf_probe.disable_eqv_add && !g_kernel_whnf_probe.disable_eqv_state) {
++        if (g_kernel_whnf_probe.active) ++g_kernel_whnf_probe.eqv_add_actual;
+         m_st->m_eqv_manager.add_equiv(t, s);
++    }
+     return r;
+ }
+ 
+diff --git a/src/kernel/type_checker.h b/src/kernel/type_checker.h
+index 23b06a2..5dd350c 100644
+--- a/src/kernel/type_checker.h
++++ b/src/kernel/type_checker.h
+@@ -171,4 +171,8 @@ public:
+ 
+ void initialize_type_checker();
+ void finalize_type_checker();
++
++// Temporary cold-replay instrumentation used by the CompPoly probe.
++void reset_kernel_whnf_probe(bool active);
++void dump_kernel_whnf_probe();
+ }

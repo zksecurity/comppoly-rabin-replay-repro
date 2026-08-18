@@ -1,0 +1,114 @@
+{
+  "base_sha": "641694629e4557520a1539b272ec338c9f3044c7",
+  "lean_toolchain": "leanprover/lean4:v4.32.2",
+  "comparator_sha": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+  "lean4export_sha": "af5aa64bb914c3c2c781f378088dbd38acf4f804",
+  "memory_watchdog_bytes_process_group": 8589934592,
+  "wall_timeout_seconds": 120,
+  "variants": {
+    "k0": {
+      "target_eq_mpr_count": 0,
+      "replay": {
+        "label": "k0:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/k0",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 26.893,
+        "peak_process_group_rss_kib": 3343312,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k0/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k0/comparator-8g.log"
+      },
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null
+    },
+    "k1": {
+      "target_eq_mpr_count": 1,
+      "replay": {
+        "label": "k1:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/k1",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 18.985,
+        "peak_process_group_rss_kib": 3343088,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k1/comparator-8g.log"
+      },
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null
+    },
+    "k2": {
+      "target_eq_mpr_count": 2,
+      "replay": {
+        "label": "k2:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/k2",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 18.741,
+        "peak_process_group_rss_kib": 3342400,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k2/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k2/comparator-8g.log"
+      },
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null
+    },
+    "k3": {
+      "target_eq_mpr_count": 3,
+      "replay": {
+        "label": "k3:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/k3",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 1,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 48.311,
+        "peak_process_group_rss_kib": 8087312,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/k3/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/k3/comparator-8g.log"
+      },
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible"
+    }
+  }
+}

@@ -1,0 +1,582 @@
+{
+  "schema_version": 1,
+  "result": "In the original condition order, every subset containing the first (trace) transport fails and every subset without it accepts. A symmetric reordered adapter flips outcomes: trace-last accepts and cop2-first fails. The transport subgraphs are unchanged across moves, so whole-application position/checking context, not transport count or proposition identity alone, determines this Lean 4.32.2 recursion pathology.",
+  "pins": {
+    "comppoly": "641694629e4557520a1539b272ec338c9f3044c7",
+    "lean_version": "4.32.2",
+    "lean_commit": "f3b06c705e6c85f5314019d5d3baab0fec5b580c",
+    "comparator": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+    "lean4export": "af5aa64bb914c3c2c781f378088dbd38acf4f804",
+    "lake_manifest_sha256": "5f52302efd2c429a7d6cd2f72b26573a6fc09af56f7f956a6037c85e3d10f172",
+    "comparator_binary_sha256": "b0f4117e1bed11493dc28e7e790fe5ece13738478ac3b91d1dca56e7a2f010bf",
+    "lean4export_binary_sha256": "6e03b4cacf87ceaa0aad890ad3a43524994443874c0dceec8ef593b3b847f26a",
+    "cache_probe_binary_sha256": "fb8e65d209c999934837cf21e2b6567865ad0ad304eb6c7b97df6e3808960c61",
+    "final_instrumentation_patch_sha256": "25a72ee897a26b37ee9df3150427405457f910c069b658a5875596389cec57be",
+    "final_instrumented_libleanshared_sha256": "f0f19c8af87f6b92ea20ba91f47f9eef18b50e2d20279189ea564e66ae1c8282"
+  },
+  "bounds": {
+    "build_wall_seconds": 90,
+    "export_wall_seconds": 120,
+    "comparator_wall_seconds": 120,
+    "process_group_rss_watchdog_gib": 8,
+    "rss_poll_milliseconds": 100,
+    "inherited_process_stack_bytes": 8372224,
+    "cpu_rlimit_seconds_per_process": "equal to phase wall bound"
+  },
+  "factorial_original_condition_order": {
+    "none": {
+      "source_variant": "k0",
+      "concrete_transports": [],
+      "target_eq_mpr_count": 0,
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null,
+      "pipeline_wall_seconds": 26.893,
+      "peak_process_group_rss_mib": 3264.953,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97641677,
+        "records": 1830923,
+        "sha256": "11c7d35e8f919c86566e5cf8ce46728ed8c0b295310abb6b260bb306bfd73ac0"
+      }
+    },
+    "cop2": {
+      "source_variant": "k1",
+      "concrete_transports": [
+        "cop2"
+      ],
+      "target_eq_mpr_count": 1,
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null,
+      "pipeline_wall_seconds": 18.985,
+      "peak_process_group_rss_mib": 3264.734,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97643822,
+        "records": 1830966,
+        "sha256": "173251a3af211bd1fcc4dbf324ed3556a19875cfa7de5fcb9ff923f614a086e2"
+      }
+    },
+    "cop3": {
+      "source_variant": "cop3",
+      "concrete_transports": [
+        "cop3"
+      ],
+      "target_eq_mpr_count": 1,
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null,
+      "pipeline_wall_seconds": 19.525,
+      "peak_process_group_rss_mib": 3263.922,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97643824,
+        "records": 1830966,
+        "sha256": "08984701e6c5c77a0dfa4421e64b6e7d1e8153cf1b3202d3e89452df78759edc"
+      }
+    },
+    "trace": {
+      "source_variant": "trace",
+      "concrete_transports": [
+        "trace"
+      ],
+      "target_eq_mpr_count": 1,
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible",
+      "pipeline_wall_seconds": 49.589,
+      "peak_process_group_rss_mib": 7848.438,
+      "returncode": 1,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97644451,
+        "records": 1830979,
+        "sha256": "3ad6a6b7e6cc9773006c8cc947d6293a1f7853c99357f0702be1bea0a2490878"
+      }
+    },
+    "cop3+cop2": {
+      "source_variant": "k2",
+      "concrete_transports": [
+        "cop3",
+        "cop2"
+      ],
+      "target_eq_mpr_count": 2,
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null,
+      "pipeline_wall_seconds": 18.741,
+      "peak_process_group_rss_mib": 3264.062,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97645044,
+        "records": 1830990,
+        "sha256": "96dbe3cfe13fed7755b27a1a8d9c3f6a822057eac2eeebd8b11d7cf833fe2156"
+      }
+    },
+    "trace+cop3": {
+      "source_variant": "trace_cop3",
+      "concrete_transports": [
+        "trace",
+        "cop3"
+      ],
+      "target_eq_mpr_count": 2,
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible",
+      "pipeline_wall_seconds": 50.123,
+      "peak_process_group_rss_mib": 7842.531,
+      "returncode": 1,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97646019,
+        "records": 1831010,
+        "sha256": "cfd3312e0da141cb7560db2e6ac5aa247c7dded42fa746e2c274ad9320901628"
+      }
+    },
+    "trace+cop2": {
+      "source_variant": "trace_cop2",
+      "concrete_transports": [
+        "trace",
+        "cop2"
+      ],
+      "target_eq_mpr_count": 2,
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible",
+      "pipeline_wall_seconds": 49.706,
+      "peak_process_group_rss_mib": 8082.719,
+      "returncode": 1,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97646017,
+        "records": 1831010,
+        "sha256": "cafc9f94554ef36892d0820d7bb16c33a72e3156003095f5d4b6161791920fce"
+      }
+    },
+    "trace+cop3+cop2": {
+      "source_variant": "k3",
+      "concrete_transports": [
+        "trace",
+        "cop3",
+        "cop2"
+      ],
+      "target_eq_mpr_count": 3,
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible",
+      "pipeline_wall_seconds": 48.311,
+      "peak_process_group_rss_mib": 7897.766,
+      "returncode": 1,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "standalone_target_export": {
+        "bytes": 97647239,
+        "records": 1831034,
+        "sha256": "7df463c63b331c644a0c1ebae812ed7f34f93667bfb6804aae2d329c30506b99"
+      }
+    }
+  },
+  "position_controls": {
+    "pos_trace_last": {
+      "description": "trace transported in last condition-proof argument",
+      "target_eq_mpr_count": 1,
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null,
+      "pipeline_wall_seconds": 18.848,
+      "peak_process_group_rss_mib": 3263.938,
+      "returncode": 0,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "graph": {
+        "target_depth": 29,
+        "target_tree_size": 3572,
+        "transport_depth": 27,
+        "transport_tree_size": 2743
+      }
+    },
+    "pos_cop2_first": {
+      "description": "cop2 transported in first condition-proof argument",
+      "target_eq_mpr_count": 1,
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible",
+      "pipeline_wall_seconds": 51.112,
+      "peak_process_group_rss_mib": 7683.938,
+      "returncode": 1,
+      "timed_out": false,
+      "memory_watchdog_triggered": false,
+      "graph": {
+        "target_depth": 31,
+        "target_tree_size": 2992,
+        "transport_depth": 27,
+        "transport_tree_size": 2175
+      }
+    },
+    "original_k1": {
+      "description": "cop2 transported last in original condition order",
+      "classification": "accepted",
+      "graph": {
+        "target_depth": 29,
+        "target_tree_size": 2992,
+        "transport_depth": 27,
+        "transport_tree_size": 2175
+      }
+    },
+    "original_trace": {
+      "description": "trace transported first in original condition order",
+      "classification": "deep_recursion",
+      "graph": {
+        "target_depth": 31,
+        "target_tree_size": 3572,
+        "transport_depth": 27,
+        "transport_tree_size": 2743
+      }
+    }
+  },
+  "isolated_transport_checks": {
+    "k1": {
+      "whole_target_classification": "accepted",
+      "isolated_maximal_eq_mpr": "failed",
+      "isolated_check_ms": 177,
+      "detail": "(kernel) deep recursion detected"
+    },
+    "trace": {
+      "whole_target_classification": "deep_recursion",
+      "isolated_maximal_eq_mpr": "failed",
+      "isolated_check_ms": 218,
+      "detail": "(kernel) deep recursion detected"
+    },
+    "pos_trace_last": {
+      "whole_target_classification": "accepted",
+      "isolated_maximal_eq_mpr": "failed",
+      "isolated_check_ms": 174,
+      "detail": "(kernel) deep recursion detected"
+    },
+    "pos_cop2_first": {
+      "whole_target_classification": "deep_recursion",
+      "isolated_maximal_eq_mpr": "failed",
+      "isolated_check_ms": 170,
+      "detail": "(kernel) deep recursion detected"
+    }
+  },
+  "accepted_target_kernel_diagnostics": {
+    "k0": {
+      "target_accepted_ms": 1,
+      "distinct_unfolded": 97,
+      "unfold_events": 347,
+      "watched_unfold_counts": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.fintype": 0,
+        "Eq.mpr": 0
+      }
+    },
+    "k1": {
+      "target_accepted_ms": 2,
+      "distinct_unfolded": 101,
+      "unfold_events": 385,
+      "watched_unfold_counts": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.fintype": 0,
+        "Eq.mpr": 0
+      }
+    },
+    "k2": {
+      "target_accepted_ms": 1,
+      "distinct_unfolded": 101,
+      "unfold_events": 385,
+      "watched_unfold_counts": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.fintype": 0,
+        "Eq.mpr": 0
+      }
+    },
+    "cop3": {
+      "target_accepted_ms": 1,
+      "distinct_unfolded": 101,
+      "unfold_events": 385,
+      "watched_unfold_counts": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.fintype": 0,
+        "Eq.mpr": 0
+      }
+    },
+    "pos_trace_last": {
+      "target_accepted_ms": 1,
+      "distinct_unfolded": 102,
+      "unfold_events": 377,
+      "watched_unfold_counts": {
+        "Fintype.card": 0,
+        "Fintype.elems": 0,
+        "ZMod.fintype": 0,
+        "Eq.mpr": 0
+      }
+    }
+  },
+  "accepted_trace_last_non_eqv_cache_controls": {
+    "baseline": {
+      "environment": {},
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false
+    },
+    "no_infer_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_INFER_CACHE": "1"
+      },
+      "outcome": "accepted",
+      "target_ms": 5,
+      "deep_recursion": false
+    },
+    "no_whnf_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_WHNF_CACHE": "1"
+      },
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false
+    },
+    "no_infer_no_whnf_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_INFER_CACHE": "1",
+        "LEAN_PROBE_NO_WHNF_CACHE": "1"
+      },
+      "outcome": "accepted",
+      "target_ms": 9,
+      "deep_recursion": false
+    },
+    "no_unfold_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_UNFOLD_CACHE": "1"
+      },
+      "outcome": "accepted",
+      "target_ms": 3,
+      "deep_recursion": false
+    },
+    "no_failure_cache": {
+      "environment": {
+        "LEAN_PROBE_NO_FAILURE_CACHE": "1"
+      },
+      "outcome": "accepted",
+      "target_ms": 4,
+      "deep_recursion": false
+    }
+  },
+  "authoritative_trace_last_equivalence_interventions": {
+    "causal_conclusion": "The late trace Eq.mpr accepts with equality-equivalence state accumulated before its final argument comparison in the surrounding application/body check. Resetting that state immediately before this exact Eq.mpr flips acceptance to deep recursion at Eq.mpr/4; globally suppressing equivalence additions also flips acceptance to deep recursion. The intervention does not attribute each cached entry to a particular earlier argument.",
+    "runs": {
+      "baseline": {
+        "log_sha256": "92b4970635b0e997f50b6b057dbdcdb9d446d251ba1ce404f5bf6cd27df5026b",
+        "outcome": "accepted",
+        "target_ms": 4,
+        "failure_phase": null,
+        "failure_app": null,
+        "failure_given_type": null,
+        "failure_expected_type": null,
+        "whnf": {
+          "entries": 2687,
+          "max_nested_calls": 26,
+          "failed_depth": 0,
+          "beta_steps": 469,
+          "let_steps": 5,
+          "projection_steps": 154,
+          "recursor_steps": 35,
+          "delta_steps": 342,
+          "nat_steps": 12
+        },
+        "unfold": {
+          "total": 377,
+          "distinct": 102,
+          "watched": {
+            "Fintype.card": 0,
+            "Fintype.elems": 0,
+            "ZMod.card": 0,
+            "ZMod.fintype": 0,
+            "Eq.mp": 0,
+            "Eq.mpr": 0,
+            "Eq.rec": 0,
+            "Eq.ndrec": 0,
+            "congrArg": 0
+          },
+          "polynomial_power_recurrence": {
+            "npowRec._f": 8,
+            "npowRec.match_1": 8,
+            "npowRec": 2
+          }
+        },
+        "equivalence": {
+          "quick": {
+            "calls": 417,
+            "true": 268,
+            "no_add": 0,
+            "isolated": 0
+          },
+          "adds": {
+            "attempts": 301,
+            "actual": 301
+          },
+          "watched_transport": {
+            "calls": 1,
+            "cached_hits": 22,
+            "initial_cached_hits": 22,
+            "ignored": 0,
+            "reset_before": 0
+          }
+        }
+      },
+      "reset_eqv_before_transport": {
+        "log_sha256": "96142e8fe8232838a6422a4a4d98114d38698e6f99b6add3a0827290d34922c5",
+        "outcome": "deep_recursion",
+        "target_ms": 5188,
+        "failure_phase": "argument-defeq",
+        "failure_app": "App:Eq.mpr/4 hash=1602071269 last=App:CompPoly.RabinCert.dvd_X_pow_sub_X_of_runChain/10 prev=App:id/2",
+        "failure_given_type": "App:Dvd.dvd/4 hash=185995994 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly",
+        "failure_expected_type": "App:Dvd.dvd/4 hash=2230689100 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly",
+        "whnf": {
+          "entries": 336869,
+          "max_nested_calls": 11566,
+          "failed_depth": 11565,
+          "beta_steps": 86904,
+          "let_steps": 3,
+          "projection_steps": 5894,
+          "recursor_steps": 11559,
+          "delta_steps": 40669,
+          "nat_steps": 5787
+        },
+        "unfold": {
+          "total": 52228,
+          "distinct": 73,
+          "watched": {
+            "Fintype.card": 0,
+            "Fintype.elems": 0,
+            "ZMod.card": 0,
+            "ZMod.fintype": 0,
+            "Eq.mp": 0,
+            "Eq.mpr": 0,
+            "Eq.rec": 0,
+            "Eq.ndrec": 0,
+            "congrArg": 0
+          },
+          "polynomial_power_recurrence": {
+            "npowRec._f": 5779,
+            "npowRec.match_1": 5779,
+            "npowRec": 1
+          }
+        },
+        "equivalence": {
+          "quick": {
+            "calls": 414,
+            "true": 261,
+            "no_add": 0,
+            "isolated": 0
+          },
+          "adds": {
+            "attempts": 290,
+            "actual": 290
+          },
+          "watched_transport": {
+            "calls": 1,
+            "cached_hits": 15,
+            "initial_cached_hits": 22,
+            "ignored": 0,
+            "reset_before": 1
+          }
+        }
+      },
+      "no_eqv_add": {
+        "log_sha256": "42c7375221667824923c20a682b1a1f0ad8ef6d176dededb10e52d56915e8d25",
+        "outcome": "deep_recursion",
+        "target_ms": 5193,
+        "failure_phase": "argument-defeq",
+        "failure_app": "App:CompPoly.RabinCert.irreducible_of_rabin_degree_six_of_three_cards_reversed/12 hash=53494038 last=App:CompPoly.RabinCert.isCoprime_X_pow_sub_X_of_runChain/16 prev=Const:KoalaBear.sexticPoly_natDegree",
+        "failure_given_type": "App:IsCoprime/4 hash=356660318 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly",
+        "failure_expected_type": "App:IsCoprime/4 hash=2779921853 last=App:HSub.hSub/6 prev=Const:KoalaBear.sexticPoly",
+        "whnf": {
+          "entries": 336303,
+          "max_nested_calls": 11568,
+          "failed_depth": 11568,
+          "beta_steps": 86855,
+          "let_steps": 0,
+          "projection_steps": 5867,
+          "recursor_steps": 11560,
+          "delta_steps": 40612,
+          "nat_steps": 5788
+        },
+        "unfold": {
+          "total": 52172,
+          "distinct": 62,
+          "watched": {
+            "Fintype.card": 0,
+            "Fintype.elems": 0,
+            "ZMod.card": 0,
+            "ZMod.fintype": 0,
+            "Eq.mp": 0,
+            "Eq.mpr": 0,
+            "Eq.rec": 0,
+            "Eq.ndrec": 0,
+            "congrArg": 0
+          },
+          "polynomial_power_recurrence": {
+            "npowRec._f": 5780,
+            "npowRec.match_1": 5780,
+            "npowRec": 1
+          }
+        },
+        "equivalence": {
+          "quick": {
+            "calls": 216,
+            "true": 125,
+            "no_add": 1,
+            "isolated": 0
+          },
+          "adds": {
+            "attempts": 143,
+            "actual": 0
+          },
+          "watched_transport": {
+            "calls": 0,
+            "cached_hits": 0,
+            "initial_cached_hits": 0,
+            "ignored": 0,
+            "reset_before": 0
+          }
+        }
+      }
+    },
+    "exact_cross_argument_cached_subpair_isolated": false
+  },
+  "resource_sensitivity": {
+    "k3_under_4gib": {
+      "classification": "memory_watchdog_before_fresh_replay",
+      "phase": "Comparator solution export",
+      "pipeline_wall_seconds": 26.354,
+      "peak_process_group_rss_mib": 4103.828,
+      "not_a_kernel_rejection": true
+    }
+  },
+  "caveats": [
+    "Fresh replay means Comparator created an empty Lean Environment; OS file caches were not flushed.",
+    "macOS has no cgroup here and rejected finite RLIMIT_AS/RLIMIT_DATA, so aggregate RSS was enforced by a 100 ms libproc watchdog and can overshoot by one sample.",
+    "The fake-landrun shim is unsandboxed; it does not affect proof checking but is not a security boundary.",
+    "The equality-transport certificate arguments are opaque theorem references; chain-step counts are not embedded term sizes.",
+    "Isolated Eq.mpr failure is not predictive: all four one-transport subterms fail cold even when their whole declarations accept.",
+    "Disabling infer and WHNF caches did not make accepted trace-last fail; those two caches are not individually necessary for that acceptance in the instrumented probe.",
+    "The decisive equality-equivalence state is established, but no single cross-argument cached pair has yet been isolated as uniquely necessary."
+  ]
+}

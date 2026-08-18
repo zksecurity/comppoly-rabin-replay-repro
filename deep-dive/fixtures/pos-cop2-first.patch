@@ -1,0 +1,69 @@
+diff --git a/CompPoly/Data/Polynomial/RabinCertificate.lean b/CompPoly/Data/Polynomial/RabinCertificate.lean
+index 72bf432..bdae70b 100644
+--- a/CompPoly/Data/Polynomial/RabinCertificate.lean
++++ b/CompPoly/Data/Polynomial/RabinCertificate.lean
+@@ -399,4 +399,38 @@ theorem irreducible_of_rabin_degree_six_of_card {F : Type*} [Field F] [Fintype F
+   subst hq
+   exact irreducible_of_rabin_degree_six h_deg h_trace h_cop₃ h_cop₂
+ 
++theorem irreducible_of_rabin_degree_six_of_three_cards
++    {F : Type*} [Field F] [Fintype F] {f : F[X]}
++    (qTrace qCop₃ qCop₂ : ℕ)
++    (hTraceCard : Fintype.card F = qTrace)
++    (hCop₃Card : Fintype.card F = qCop₃)
++    (hCop₂Card : Fintype.card F = qCop₂)
++    (h_deg : f.natDegree = 6)
++    (h_trace : f ∣ X ^ (qTrace ^ 6) - X)
++    (h_cop₃ : IsCoprime f (X ^ (qCop₃ ^ 3) - X))
++    (h_cop₂ : IsCoprime f (X ^ (qCop₂ ^ 2) - X)) :
++    Irreducible f := by
++  subst qTrace
++  subst qCop₃
++  subst qCop₂
++  exact irreducible_of_rabin_degree_six h_deg h_trace h_cop₃ h_cop₂
++
++/-- The same three-card adapter, with the three condition proofs supplied in
++the reverse order.  This controls the application-spine position of a concrete
++transport without changing its proposition. -/
++theorem irreducible_of_rabin_degree_six_of_three_cards_reversed
++    {F : Type*} [Field F] [Fintype F] {f : F[X]}
++    (qTrace qCop₃ qCop₂ : ℕ)
++    (hTraceCard : Fintype.card F = qTrace)
++    (hCop₃Card : Fintype.card F = qCop₃)
++    (hCop₂Card : Fintype.card F = qCop₂)
++    (h_deg : f.natDegree = 6)
++    (h_cop₂ : IsCoprime f (X ^ (qCop₂ ^ 2) - X))
++    (h_cop₃ : IsCoprime f (X ^ (qCop₃ ^ 3) - X))
++    (h_trace : f ∣ X ^ (qTrace ^ 6) - X) : Irreducible f := by
++  subst qTrace
++  subst qCop₃
++  subst qCop₂
++  exact irreducible_of_rabin_degree_six h_deg h_trace h_cop₃ h_cop₂
++
+ end CompPoly.RabinCert
+diff --git a/CompPoly/Fields/KoalaBear/Ext6/SexticIrreducible.lean b/CompPoly/Fields/KoalaBear/Ext6/SexticIrreducible.lean
+index bd5a293..d49d72e 100644
+--- a/CompPoly/Fields/KoalaBear/Ext6/SexticIrreducible.lean
++++ b/CompPoly/Fields/KoalaBear/Ext6/SexticIrreducible.lean
+@@ -138,13 +138,16 @@ theorem sextic_cop2_bezout_check :
+ factors, with kernel-checked certificates for all three conditions. -/
+ theorem sexticPoly_irreducible : Irreducible sexticPoly := by
+   have hcard : Fintype.card Field = fieldSize := ZMod.card _
+-  refine irreducible_of_rabin_degree_six_of_card fieldSize hcard sexticPoly_natDegree ?_ ?_ ?_
+-  · exact dvd_X_pow_sub_X_of_runChain toPoly_sexticL sexticPoly_ne_zero
+-      sextic_trace_chain sextic_trace_exp
++  refine irreducible_of_rabin_degree_six_of_three_cards_reversed
++    fieldSize fieldSize (Fintype.card Field)
++    hcard hcard rfl sexticPoly_natDegree ?_ ?_ ?_
++  · rw [hcard]
++    exact isCoprime_X_pow_sub_X_of_runChain toPoly_sexticL sexticPoly_ne_zero
++      sextic_cop2_chain sextic_cop2_exp sextic_cop2_w_check sextic_cop2_bezout_check
+   · exact isCoprime_X_pow_sub_X_of_runChain toPoly_sexticL sexticPoly_ne_zero
+       sextic_cop3_chain sextic_cop3_exp sextic_cop3_w_check sextic_cop3_bezout_check
+-  · exact isCoprime_X_pow_sub_X_of_runChain toPoly_sexticL sexticPoly_ne_zero
+-      sextic_cop2_chain sextic_cop2_exp sextic_cop2_w_check sextic_cop2_bezout_check
++  · exact dvd_X_pow_sub_X_of_runChain toPoly_sexticL sexticPoly_ne_zero
++      sextic_trace_chain sextic_trace_exp
+ 
+ instance : Fact (Irreducible sexticPoly) := ⟨sexticPoly_irreducible⟩
+ 

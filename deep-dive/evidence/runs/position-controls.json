@@ -1,0 +1,205 @@
+{
+  "base_sha": "641694629e4557520a1539b272ec338c9f3044c7",
+  "lean_toolchain": "leanprover/lean4:v4.32.2",
+  "comparator_sha": "51491237b1d2f96cca203af9c34bced6fe38e0d8",
+  "lean4export_sha": "af5aa64bb914c3c2c781f378088dbd38acf4f804",
+  "shared_adapter": "irreducible_of_rabin_degree_six_of_three_cards_reversed",
+  "memory_watchdog_bytes_process_group": 8589934592,
+  "wall_timeouts_seconds": {
+    "build": 90,
+    "export": 120,
+    "replay": 120
+  },
+  "variants": {
+    "pos_trace_last": {
+      "description": "trace transported in last condition-proof argument",
+      "build": {
+        "label": "pos_trace_last:build",
+        "command": [
+          "lake",
+          "--no-cache",
+          "build",
+          "CompPoly.Data.Polynomial.RabinCertificate",
+          "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+          "CompPoly.ReplayChallenge",
+          "CompPoly.ReplaySolution"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_trace_last",
+        "timeout_seconds": 90,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 14.597,
+        "peak_process_group_rss_kib": 2776960,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/build.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/build.log"
+      },
+      "inspect": {
+        "label": "pos_trace_last:inspect",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "/private/tmp/comppoly-transport-matrix-20260818/source/InspectVariant.lean"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_trace_last",
+        "timeout_seconds": 30,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 2.831,
+        "peak_process_group_rss_kib": 2729456,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/inspect.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/inspect.log"
+      },
+      "target_eq_mpr_count": 1,
+      "export": {
+        "label": "pos_trace_last:export",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/packages/lean4export/.lake/build/bin/lean4export",
+          "CompPoly.ReplaySolution",
+          "--",
+          "ReplayDemo.target"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_trace_last",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 5.425,
+        "peak_process_group_rss_kib": 3032608,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_trace_last.ndjson",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/export.stderr.log"
+      },
+      "export_bytes": 97644315,
+      "export_records": 1830976,
+      "export_sha256": "3230ba9e3c41a1b1a01617c5be60b69ad4e3cff3460e7d4cd4c57de89ab78175",
+      "replay": {
+        "label": "pos_trace_last:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_trace_last",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 18.848,
+        "peak_process_group_rss_kib": 3342272,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_trace_last/comparator-8g.log"
+      },
+      "classification": "accepted",
+      "entered_fresh_replay": true,
+      "failing_declaration": null
+    },
+    "pos_cop2_first": {
+      "description": "cop2 transported in first condition-proof argument",
+      "build": {
+        "label": "pos_cop2_first:build",
+        "command": [
+          "lake",
+          "--no-cache",
+          "build",
+          "CompPoly.Data.Polynomial.RabinCertificate",
+          "CompPoly.Fields.KoalaBear.Ext6.SexticIrreducible",
+          "CompPoly.ReplayChallenge",
+          "CompPoly.ReplaySolution"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_cop2_first",
+        "timeout_seconds": 90,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 8.66,
+        "peak_process_group_rss_kib": 2770944,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/build.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/build.log"
+      },
+      "inspect": {
+        "label": "pos_cop2_first:inspect",
+        "command": [
+          "lake",
+          "env",
+          "lean",
+          "/private/tmp/comppoly-transport-matrix-20260818/source/InspectVariant.lean"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_cop2_first",
+        "timeout_seconds": 30,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 2.813,
+        "peak_process_group_rss_kib": 2739200,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/inspect.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/inspect.log"
+      },
+      "target_eq_mpr_count": 1,
+      "export": {
+        "label": "pos_cop2_first:export",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/packages/lean4export/.lake/build/bin/lean4export",
+          "CompPoly.ReplaySolution",
+          "--",
+          "ReplayDemo.target"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_cop2_first",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 0,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 5.161,
+        "peak_process_group_rss_kib": 3030528,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/exports/pos_cop2_first.ndjson",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/export.stderr.log"
+      },
+      "export_bytes": 97643686,
+      "export_records": 1830963,
+      "export_sha256": "b3bb3c387dd3ff594a285bc96fc266db35a31a34620675e14e2ac1a168a12760",
+      "replay": {
+        "label": "pos_cop2_first:comparator-8g",
+        "command": [
+          "lake",
+          "env",
+          "/private/tmp/replay-command-repro/comparator-af5/.lake/build/bin/comparator",
+          "/private/tmp/comppoly-transport-matrix-20260818/configs/replay.json"
+        ],
+        "cwd": "/private/tmp/comppoly-transport-matrix-20260818/variants/pos_cop2_first",
+        "timeout_seconds": 120,
+        "memory_watchdog_bytes_process_group": 8589934592,
+        "inherited_stack_limit_bytes_per_process": 8372224,
+        "returncode": 1,
+        "timed_out": false,
+        "memory_exceeded": false,
+        "wall_seconds": 51.112,
+        "peak_process_group_rss_kib": 7868352,
+        "stdout": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/comparator-8g.log",
+        "stderr": "/private/tmp/comppoly-transport-matrix-20260818/logs/pos_cop2_first/comparator-8g.log"
+      },
+      "classification": "deep_recursion",
+      "entered_fresh_replay": true,
+      "failing_declaration": "KoalaBear.sexticPoly_irreducible"
+    }
+  }
+}
